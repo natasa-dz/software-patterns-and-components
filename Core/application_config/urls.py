@@ -1,5 +1,5 @@
 """
-URL configuration for SOK project.
+URL configuration for application_config project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('core.urls'))  #here we say, if i get any url beside admins, we will search it inside core.urls
+                                    #only core will exist
 ]
