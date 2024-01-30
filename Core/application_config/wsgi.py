@@ -1,5 +1,5 @@
 """
-WSGI config for SOK project.
+WSGI config for application_config project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'SOK.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'application_config.settings')
 
 application = get_wsgi_application()
