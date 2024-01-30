@@ -10,4 +10,6 @@ def index(request):
 
 def base(request):
     title = apps.get_app_config('core').verbose_name
-    return render(request, 'base.html', {'title': title})
+    files = apps.get_app_config('core').data
+    print("[Debug] files that are going to html: ", files)
+    return render(request, 'base.html', {'title': title, 'data': files})

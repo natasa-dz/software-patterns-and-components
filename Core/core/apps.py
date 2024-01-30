@@ -12,9 +12,11 @@ class CoreConfig(AppConfig):
     data = []
     #kad pritisnem isparsiram neki fajl, onda ovde mogu da upisem instancu grafa koji je trenutno kreiran
     def ready(self):
+        print("[Debug] ===============USLO U READY===============")
         self.data = load_files_from_directory("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data")
         self.visualizers = load_visualizers()
         self.loaders = load_loaders()
+        print("[Debug] data: ", self.data)
 
 def load_visualizers():
     oznaka = "plugin.visualizators"

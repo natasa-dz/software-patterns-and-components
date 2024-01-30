@@ -18,7 +18,7 @@
                 <label for="data-content-selector" >Select which file to parse: </label>
                 <select id="data-content-selector" style="width: 160px;">
                     {% for file in data %}
-                        <option value="{{ file }}">{{ file.name }}</option>
+                        <option value="{{ file }}">{{ file }}</option>
                     {% endfor %}
                 </select>
                 <label for="visualizator-type-selector">Select type of visualization: </label>
