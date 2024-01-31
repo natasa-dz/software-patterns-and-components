@@ -97,6 +97,7 @@ if __name__ == "__main__":
     loader = XMLLoader()
     root = loader.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_bidirectional.xml")
     # root = loader.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_normal.xml")
+    # root = loader.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_cyclic.xml")
     graph = loader.create_graph(root)
     print(graph)
 

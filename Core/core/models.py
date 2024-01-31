@@ -81,9 +81,8 @@ class Graph(object):
         self.edges = {}
 
     def add_vertex(self, vertex: Vertex):
-        if vertex not in self.vertices.values():
-            self.vertices[vertex.id] = vertex
-            return vertex
+        self.vertices[vertex.id] = vertex
+        return vertex
 
     def get_vertex(self, key):
         return self.vertices.get(key)
