@@ -6,5 +6,5 @@ class BaseService(ABC):
         pass
 
     @abstractmethod
-    def identifier(self):
+    def id(self):
         pass

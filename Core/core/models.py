@@ -1,12 +1,64 @@
 from typing import Dict, Any
 
 
-class Vertex:   #declaration that id must be typeof int!!!!
-    def __init__(self, attributes: Dict[str, Any]):
-        self.attributes = attributes
+class Vertex(object):
+    _id_counter = 0
 
-    def get_id(self) -> int:
-        return self.attributes['id']
+    def __init__(self, id: int=None):
+        self._attributes = {}
+        self._id = id
+        self._edges = []
+
+    @property
+    def attributes(self):
+        return self._attributes
+
+    @attributes.setter
+    def attributes(self, attributes):
+        self._attributes = attributes
+
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        self._id = id
+
+    @property
+    def edges(self):
+        return self._edges
+
+    def degree(self):
+        return len(self._edges)
+
+    def add_attribute(self, key, value):
+        self._attributes[key] = value
+
+    def add_edge(self, e):
+        already_existing = self.contains_edge(e)
+        if already_existing:
+            self._edges[self._edges.index(already_existing)] = e
+        else:
+            self._edges.append(e)
+
+    def contains_edge(self, e):
+        for edge in self._edges:
+            if e == edge:
+                return edge
+        return None
+
+    def __eq__(self, other):
+        if isinstance(other, Vertex):
+            if self._attributes.keys() != other._attributes.keys():
+                return False
+            for attr in self._attributes:
+                if self.attributes[attr] != other._attributes[attr]:
+                    return False
+        else:
+            return False
+        return True
+
 
 
 class Edge:
@@ -23,18 +75,23 @@ class Edge:
     def equals(self, other_edge) -> bool:
         return self.start == other_edge.get_start() and self.end == other_edge.get_end()
 
-class Graph:
+class Graph(object):
     def __init__(self):
-        self.vertices = {}
+        self.vertices: Dict[int, Vertex] = {}
         self.edges = {}
 
-    def add_vertex(self, data: Dict[str, Any]):
-        new_vertex = Vertex(data)
-        self.vertices[new_vertex.get_id()] = new_vertex
-        return new_vertex
+    def add_vertex(self, vertex: Vertex):
+        self.vertices[vertex.id] = vertex
+        return vertex
 
     def get_vertex(self, key):
         return self.vertices.get(key)
+
+    def contains_vertex(self, attributes: Dict[str, Any]):
+        for vertex in self.vertices.values():
+            if vertex.attributes.keys() == attributes.keys() and vertex.attributes.values() == attributes.values():
+                return True
+        return False
 
     def add_edge(self, start: int, end: int):
         #note: these two if cases will not happen, but i put it here so i can then later move it to somewhere where i will check for these errors
@@ -61,6 +118,11 @@ class Graph:
                     if temp2.equals(edge2):
                         return True
         return False
+
+    def handle_duplicate(self, duplicate: Vertex):
+        if duplicate in self.edges.keys():
+            pass
+
 
 # # Example usage:
 # graph = Graph()
