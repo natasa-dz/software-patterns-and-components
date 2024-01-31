@@ -1,0 +1,26 @@
+<tree>
+    <node id="1">
+        <name>Root</name>
+        <children>
+            <node id="2">
+                <name>Child 1</name>
+                <children>
+                    <node id="4">
+                        <name>Grandchild 1</name>
+                    </node>
+                    <node id="5">
+                        <name>Grandchild 2</name>
+                    </node>
+                </children>
+            </node>
+            <node id="3">
+                <name>Child 2</name>
+                <children>
+                    <node id="6">
+                        <name>Grandchild 3</name>
+                    </node>
+                </children>
+            </node>
+        </children>
+    </node>
+</tree>
