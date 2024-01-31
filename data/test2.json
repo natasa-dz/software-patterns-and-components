@@ -1,24 +1,27 @@
 {
-  "id": 1,
-  "name": "Node 1",
+  "name": "Root",
+  "value": 42,
   "children": [
     {
-      "id": 2,
-      "name": "Node 2",
-      "children": [
-        {
-          "id": 3,
-          "name": "Node 3"
-        },
-        {
-          "id": 4,
-          "name": "Node 4"
-        }
-      ]
+      "name": "Child1",
+      "value": 10,
+      "attributes": {
+        "color": "red"
+      }
     },
     {
-      "id": 5,
-      "name": "Node 5"
+      "name": "Child2",
+      "value": 20,
+      "children": [
+        {
+          "name": "Subchild1",
+          "value": 5
+        },
+        {
+          "name": "Subchild2",
+          "value": 15
+        }
+      ]
     }
   ]
 }

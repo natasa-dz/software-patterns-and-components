@@ -1,18 +1,82 @@
 from typing import Dict, Any
 
 
-class Vertex:   #declaration that id must be typeof int!!!!
-    def __init__(self, attributes: Dict[str, Any]):
-        self.attributes = attributes
+class Vertex:
+    _id_counter = 0
 
-    def get_id(self) -> int:
-        return self.attributes['id']
+    def __init__(self, id=None):
+        self._attributes = {}
+        self._id = id or self._generate_unique_id()
+        self._edges = []
 
+    @property
+    def attributes(self):
+        return self._attributes
+
+    @attributes.setter
+    def attributes(self, attributes):
+        self._attributes = attributes
+
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        self._id = id
+
+    @property
+    def edges(self):
+        return self._edges
+
+    def degree(self):
+        return len(self._edges)
+
+    def add_attribute(self, key, value):
+        self._attributes[key] = value
+
+    def add_edge(self, e):
+        already_existing = self.contains_edge(e)
+        if already_existing:
+            self._edges[self._edges.index(already_existing)] = e
+        else:
+            self._edges.append(e)
+
+    def contains_edge(self, e):
+        for edge in self._edges:
+            if e == edge:
+                return edge
+        return None
+
+
+    def get_adjacent_vertices(self):
+        return [edge.get_end() for edge in self._edges]
+
+    def get_outgoing_edges(self):
+        return [edge for edge in self._edges]
+
+    def get_incoming_edges(self):
+        return [edge for edge in self._edges if edge.get_end() == self._id]
+
+    def is_adjacent(self, other_vertex):
+        return any(edge.get_end() == other_vertex.id for edge in self._edges)
+
+    def is_outgoing_edge(self, edge):
+        return edge in self._edges
+
+    def is_incoming_edge(self, edge):
+        return edge in self.get_incoming_edges()
+
+    def _generate_unique_id(self):
+        current_id = Vertex._id_counter
+        Vertex._id_counter += 1
+        return current_id
 
 class Edge:
     def __init__(self, start: int, end: int):
         self.start = start
         self.end = end
+
 
     def get_start(self) -> int:
         return self.start
@@ -21,46 +85,47 @@ class Edge:
         return self.end
 
     def equals(self, other_edge) -> bool:
-        return self.start == other_edge.get_start() and self.end == other_edge.get_end()
-
+        return (
+            self.start == other_edge.get_start()
+            and self.end == other_edge.get_end()
+        )
 class Graph:
     def __init__(self):
         self.vertices = {}
-        self.edges = {}
+        self.edges = []
 
-    def add_vertex(self, data: Dict[str, Any]):
-        new_vertex = Vertex(data)
-        self.vertices[new_vertex.get_id()] = new_vertex
-        return new_vertex
-
+    def add_vertex(self, vertex: 'Vertex'):
+        self.vertices[vertex.id] = vertex
     def get_vertex(self, key):
         return self.vertices.get(key)
 
     def add_edge(self, start: int, end: int):
-        #note: these two if cases will not happen, but i put it here so i can then later move it to somewhere where i will check for these errors
-        # if start not in self.vertices:
-        #     raise ValueError(f"Vertex {start} not found in the graph. Please chech that the data is not corrupt")
-        # if end not in self.vertices:
-        #     raise ValueError(f"Vertex {end} not found in the graph. Please check that the data is not corrupt")
+        # Check if the edge already exists
+        if not any(edge.equals(Edge(start, end)) for edge in self.edges):
+            self.edges.append(Edge(start, end))
 
-        if start in self.edges.keys():
-            self.edges[start].append(Edge(start, end))
-        else:
-            self.edges[start] = []
-            self.edges[start].append(Edge(start, end))
+    def add_bidirectional_edge(self, vertex1: Vertex, vertex2: Vertex):
+        # Create an edge from vertex1 to vertex2
+        self.add_edge(vertex1.id, vertex2.id)
+
+        # Create a bidirectional edge
+        self.add_edge(vertex2.id, vertex1.id)
 
     def isBiDirectional(self, vertex1: Vertex, vertex2: Vertex):
-        edge1 = Edge(vertex1.get_id(), vertex2.get_id())
-        edge2 = Edge(vertex2.get_id(), vertex1.get_id())
-        edgesFromStart = self.edges.get(vertex1.get_id())
-        edgesFromEnd = self.edges.get(vertex2.get_id())
+        edge1 = Edge(vertex1.id, vertex2.id)
+        edge2 = Edge(vertex2.id, vertex1.id)
 
-        for temp in edgesFromStart:
-            if temp.equals(edge1):
-                for temp2 in edgesFromEnd:
-                    if temp2.equals(edge2):
-                        return True
-        return False
+        return edge1 in self.edges and edge2 in self.edges
+
+
+    def print_graph(self):
+        print("Nodes:")
+        for vertex_id, vertex in self.vertices.items():
+            print(f"Node {vertex_id}: {vertex.attributes}")
+
+        print("\nEdges:")
+        for edge in self.edges:
+            print(f"Edge: {edge.start} -> {edge.end}")
 
 # # Example usage:
 # graph = Graph()
