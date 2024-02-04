@@ -74,7 +74,7 @@ class Vertex:
 
 
 class Edge:
-    def __init__(self, start: int, end: int):
+    def __init__(self, start: int, end: int, label=None):
         self.start = start
         self.end = end
         self.label=label
