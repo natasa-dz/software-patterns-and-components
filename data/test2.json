@@ -1,6 +1,10 @@
 {
   "name": "Root",
   "value": 42,
+  "attributes": {
+    "color": "blue",
+    "shape": "circle"
+  },
   "children": [
     {
       "name": "Child1",
@@ -12,6 +16,9 @@
     {
       "name": "Child2",
       "value": 20,
+      "attributes": {
+        "size": "large"
+      },
       "children": [
         {
           "name": "Subchild1",
@@ -19,7 +26,10 @@
         },
         {
           "name": "Subchild2",
-          "value": 15
+          "value": 15,
+          "attributes": {
+            "shape": "square"
+          }
         }
       ]
     }

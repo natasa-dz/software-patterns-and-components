@@ -72,10 +72,12 @@ class Vertex:
         Vertex._id_counter += 1
         return current_id
 
+
 class Edge:
     def __init__(self, start: int, end: int):
         self.start = start
         self.end = end
+        self.label=label
 
 
     def get_start(self) -> int:
@@ -89,6 +91,7 @@ class Edge:
             self.start == other_edge.get_start()
             and self.end == other_edge.get_end()
         )
+
 class Graph:
     def __init__(self):
         self.vertices = {}
