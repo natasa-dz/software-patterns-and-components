@@ -1,5 +1,5 @@
 import copy
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Set
 
 
 class Vertex:
@@ -7,7 +7,7 @@ class Vertex:
 
     def __init__(self, id=None):
         self._attributes = {}
-        self._id = id or self._generate_unique_id()
+        self._id = id
         self._edges = []
 
     @property
@@ -200,21 +200,24 @@ class Node(object):
     #     self._attributes = {}
     #     self._id = id or self._generate_unique_id()
     #     self._edges = []
-    def __init__(self, vertex: Vertex):
+    def __init__(self, vertex: Vertex, recursive=False):
         self.attributes = vertex.attributes
         self.id = vertex.id
         self.children = []
+        self.recursive = recursive
 
     def add_child(self, child_node):
         self.children.append(child_node)
 
 
 class Tree:
-
     list_of_vertices: List[Vertex]
     root: Node
+    containing_node_ids: Set[int]
+
     def __init__(self, vertices_to_manage):
         self.list_of_vertices = vertices_to_manage
+        self.containing_node_ids = set()
         self.create_from_graph()
 
     def create_from_graph(self):
@@ -227,13 +230,23 @@ class Tree:
 
     def create_subtree(self, list_of_edges, parent_node):
         for edge in list_of_edges:
-            end_vertex = self.find_vertex_by_id(edge.get_end())
-            child = Node(end_vertex)
-            parent_node.add_child(child)
-            self.remove_vertex_by_id(child.id)
+            if edge.end not in self.containing_node_ids:
 
-            if len(end_vertex.edges) != 0:
-                self.create_subtree(end_vertex.edges, child)
+                end_vertex = self.find_vertex_by_id(edge.get_end())
+                # if end_vertex is None:  #this if is added for logic when having recursion
+                #     child = Node(Vertex(edge.start), True)
+                # else:
+                child = Node(end_vertex)
+                self.remove_vertex_by_id(child.id)
+
+                parent_node.add_child(child)
+
+                # if len(end_vertex.edges) != 0 and not child.recursive:
+                if len(end_vertex.edges) != 0:
+                    self.create_subtree(end_vertex.edges, child)
+            else:
+                child = Node(Vertex(edge.get_end()), True)
+                parent_node.add_child(child)
 
     def find_vertex_by_id(self, lookup_id) -> Vertex:
         for vertex in self.list_of_vertices:
@@ -243,6 +256,7 @@ class Tree:
     def remove_vertex_by_id(self, lookup_id):
         vertex_to_remove = self.find_vertex_by_id(lookup_id)
         self.list_of_vertices.remove(vertex_to_remove)
+        self.containing_node_ids.add(vertex_to_remove.id)
 
     def add_node(self, node):
         if not self.root:
