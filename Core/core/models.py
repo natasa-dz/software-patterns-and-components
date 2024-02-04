@@ -210,11 +210,12 @@ class Node(object):
 
 
 class Tree:
+
     list_of_vertices: List[Vertex]
     root: Node
-
     def __init__(self, vertices_to_manage):
         self.list_of_vertices = vertices_to_manage
+        self.create_from_graph()
 
     def create_from_graph(self):
         self.root = Node(self.list_of_vertices[0])
@@ -232,7 +233,7 @@ class Tree:
             self.remove_vertex_by_id(child.id)
 
             if len(end_vertex.edges) != 0:
-                self.create_subtree(list_of_edges, child)
+                self.create_subtree(end_vertex.edges, child)
 
     def find_vertex_by_id(self, lookup_id) -> Vertex:
         for vertex in self.list_of_vertices:
@@ -259,6 +260,7 @@ class Forest:
         self.trees = []
         self.graph = graph
         self.list_of_graph_vertices = list(copy.deepcopy(graph.vertices))
+        self.create_forest()
 
     def create_forest(self):
         while len(self.list_of_graph_vertices) != 0:

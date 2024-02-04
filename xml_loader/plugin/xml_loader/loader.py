@@ -1,4 +1,4 @@
-from Core.core.models import Vertex, Graph, Edge
+from Core.core.models import Vertex, Graph, Edge, Forest
 from Core.core.services.loading import LoadingService
 import xml.etree.ElementTree as ET
 
@@ -95,10 +95,12 @@ class XMLLoader(LoadingService):
 
 if __name__ == "__main__":
     loader = XMLLoader()
-    root = loader.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_bidirectional.xml")
-    # root = loader.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_normal.xml")
+    # root = loader.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_bidirectional.xml")
+    root = loader.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_normal.xml")
     # root = loader.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_cyclic.xml")
     graph = loader.create_graph(root)
     print(graph)
+    f = Forest(graph)
+    print(f)
 
 
