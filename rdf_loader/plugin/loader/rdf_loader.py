@@ -100,12 +100,3 @@ if __name__ == '__main__':
             print(f"Start: {edge.start.id}, End: {edge.end.id}, Label: {edge.label}")
 
 
-
-    # Access the parsed graph, vertices, and edges
-    # print("Vertices:")
-    # for vertex_id, vertex in parsed_graph.vertices.items():
-    #         print(f"Vertex ID: {vertex_id}")
-    #
-    # print("Edges:")
-    # for edge in parsed_graph.edges:
-    #     print(f"Start: {edge.start._id}, End: {edge.end._id}")
