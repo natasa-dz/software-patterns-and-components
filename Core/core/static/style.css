@@ -3,7 +3,7 @@
 }
 
 .header{
-    background: brown;
+    background: rgba(245, 209, 209, 0.78);
     display: flex;
 }
 
@@ -19,4 +19,13 @@
 .right{
     width: 60%;
     background: blueviolet;
+}
+
+/* Example CSS for graph styling */
+.node {
+    /* Define styles for nodes */
+}
+
+.edge {
+    /* Define styles for edges */
 }

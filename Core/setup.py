@@ -5,6 +5,7 @@ setup(
     name="sok-core",
     # verzija komponente
     version="0.1",
+    namespace_packages=['core'],
     packages=find_packages(),
     install_requires=['Django>=3.1'],   #moramo imati django da bi ovo mogli instalirati
     zip_safe=False,

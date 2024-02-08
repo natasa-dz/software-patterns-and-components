@@ -12,7 +12,7 @@
                 <label for="data-type-selector">Select type of data to parse: </label>
                 <select id="data-type-selector" style="width: 160px;">
                     {% for loader in loaders %}
-                        <option value="{{ loader }}">{{ loader.name }}</option>
+                        <option value="{{ loader.name }}">{{ loader.name }}</option>
                     {% endfor %}
                 </select>
                 <label for="data-content-selector" >Select which file to parse: </label>
@@ -24,7 +24,8 @@
                 <label for="visualizator-type-selector">Select type of visualization: </label>
                 <select id="visualizator-type-selector" style="width: 160px;">
                     {% for visualizer in visualizers %}
-                        <option value="{{ visualizer }}">{{ visualizer.name }}</option>
+                    <!-- izmenila sam u visualizer.identifier umesto samo viusalizer-->
+                        <option value="{{ visualizer.name }}">{{ visualizer.name }}</option>
                     {% endfor %}
                 </select>
                 <button id="start-parsing" type="button">Start parse</button>
@@ -40,5 +41,47 @@
                 </div>
             </div>
         </div>
+<!-- Include jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+    // JavaScript code to handle "Start parse" button click event
+    $("#start-parsing").on("click", function () {
+        var loader = $("#data-type-selector").val();
+        var file = $("#data-content-selector").val();
+        var csrf_token = "{{ csrf_token }}";  // Add CSRF token if needed
+
+
+        // Make an AJAX request to trigger the simple_visualization view
+        $.ajax({
+            url: "{% url 'simple_visualization' %}",
+            method: "POST",
+            data: {
+                loader: loader,
+                file: file,
+                csrfmiddlewaretoken: csrf_token
+
+            },
+            success: function (response) {
+                // Handle successful response, e.g., render the visualization
+                renderVisualization(response.visualization_data);
+            },
+            error: function (xhr, status, error) {
+                // Handle error
+                console.error(error);
+            }
+        });
+    });
+
+    // Function to render the visualization data
+    function renderVisualization(visualizationData) {
+        // Add your visualization rendering code here
+        console.log("Visualization data:", visualizationData);
+    }
+</script>
+
+
+
+
     </body>
 </html>

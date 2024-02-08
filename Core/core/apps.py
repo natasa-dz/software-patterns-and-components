@@ -10,22 +10,23 @@ class CoreConfig(AppConfig):
     visualizers: []
     loaders: []
     data = []
+
     #kad pritisnem isparsiram neki fajl, onda ovde mogu da upisem instancu grafa koji je trenutno kreiran
     def ready(self):
-        print("[Debug] ===============USLO U READY===============")
         self.data = load_files_from_directory("..\\data")
         self.visualizers = load_visualizers()
         self.loaders = load_loaders()
-        print("[Debug] data: ", self.data)
 
 def load_visualizers():
-    oznaka = "plugin.visualizators"
+    oznaka = "plugin.visualizer"
     visualizators = load_plugins(oznaka)
+    print("Viusalizators:", visualizators)
     return visualizators
 
 def load_loaders():
-    oznaka = "plugin.loaders"
+    oznaka = "plugin.loader"
     loaders = load_plugins(oznaka)
+    print("Loaders: ", loaders)
     return loaders
 
 def load_plugins(identifier):
@@ -35,8 +36,6 @@ def load_plugins(identifier):
         plugin = p()
         list_to_load.append(plugin)
     return list_to_load
-
-
 def load_files_from_directory(directory_path):
     try:
         # List all files in the directory
