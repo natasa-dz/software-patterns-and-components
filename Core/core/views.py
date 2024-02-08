@@ -4,7 +4,7 @@ import pkg_resources
 from django.apps import apps
 from django.http import JsonResponse
 from django.shortcuts import render
-from plugin.loader.rdf_loader import RdfParser
+from rdf_loader.plugin.loader.rdf_loader import RdfParser
 #from plugin.xml_loader.loader import XmlLoader
 
 
@@ -55,8 +55,6 @@ def get_graph(loader, file_name):
     return None
 
 
-
-
 def simple_visualization(request):
     if request.method == 'POST':
 
@@ -94,30 +92,21 @@ def are_parser_and_file_type_matching(loader, file):
 
 
 def complex_visualization(request):
-    visualizers = apps.get_app_config('core').visualizers
-    graph = apps.get_app_config('core').current_graph
+    if request.method == 'POST':
+        visualizer = get_visualizer("Complex Visualizer")
+        loader_name = request.POST.get('loader')
+        loader = get_loader(loader_name)
+        file_name = request.POST.get('file')
+        print("-------------------- COMPLEX VISUALIZATION ------------------------")
+        print('VISUALIZER: ', visualizer)
+        print('LOADER: ', loader)
+        print('FILE NAME: ', file_name)
 
-    graph_missing = False
-    if graph is None:
-        graph_missing = True
-    else:
-        path = os.path.abspath(os.path.join(
-            os.path.dirname(__file__), "templates", "mainView.html"))
+        graph = get_graph(loader, file_name)
+        if visualizer and graph:
+            visualization_data = visualizer.visualize(graph, request)
+            print("Visualization data rendered! ")
+            return JsonResponse({'visualization_data': visualization_data})
 
-        for visualizer in visualizers:
-            if visualizer.identifier() == "complex-visualizer":
-                apps.get_app_config(
-                    'core').current_visualizer = "ComplexVisualizer"
-                with open(path, 'w') as file:
-                    file.write(visualizer.visualize(graph, request))
+    return JsonResponse({'error': 'Invalid request'})
 
-    visualizers = []
-    for visualizer in apps.get_app_config('core').visualizers:
-        visualizers.append({"name": visualizer.name(), "identifier": visualizer.identifier()})
-    loaders = []
-    for loader in apps.get_app_config('core').loaders:
-        loaders.append({"name": loader.name(), "identifier": loader.identifier()})
-    graph = apps.get_app_config('core').current_graph
-    tree = apps.get_app_config('core').tree
-    return render(request, "index.html", {'graph': graph, 'tree': tree, 'visualizers': visualizers, 'loaders': loaders,
-                                          "graph_missing": graph_missing})

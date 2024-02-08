@@ -94,13 +94,11 @@ class Vertex:
         return True
 
 
-
 class Edge:
     def __init__(self, start: int, end: int, label=None):
         self.start = start
         self.end = end
-        self.label=label
-
+        self.label = label
 
     def get_start(self) -> int:
         return self.start
@@ -114,6 +112,7 @@ class Edge:
             and self.end == other_edge.get_end()
         )
 
+
 class Graph(object):
     def __init__(self):
         self.vertices: Dict[int, Vertex] = {}
@@ -121,6 +120,7 @@ class Graph(object):
 
     def add_vertex(self, vertex: 'Vertex'):
         self.vertices[vertex.id] = vertex
+
     def get_vertex(self, key):
         return self.vertices.get(key)
 
@@ -149,8 +149,6 @@ class Graph(object):
         # Create a bidirectional edge
         self.add_edge(vertex2.id, vertex1.id)
 
-
-
     def isBiDirectional(self, vertex1: Vertex, vertex2: Vertex):
         edge1 = Edge(vertex1.get_id(), vertex2.get_id())
         edge2 = Edge(vertex2.get_id(), vertex1.get_id())
@@ -172,8 +170,6 @@ class Graph(object):
         print("\nEdges:")
         for edge in self.edges:
             print(f"Edge: {edge.start} -> {edge.end}")
-
-
 
     def handle_duplicate(self, duplicate: Vertex):
         if duplicate in self.edges.keys():

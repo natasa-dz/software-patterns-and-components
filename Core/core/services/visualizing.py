@@ -1,6 +1,6 @@
 from abc import abstractmethod
 
-from core.services.base import BaseService
+from Core.core.services.base import BaseService
 
 class VisualizingService(BaseService):
     @abstractmethod

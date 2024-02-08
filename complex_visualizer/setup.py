@@ -10,6 +10,6 @@ setup(
     entry_points={
         'visualizer': ['complex_visualizer = plugin.visualizer.complex_visualizer:ComplexVisualizer']
     },
-    install_requires=["core>=0.1"],
+    install_requires=["sok-core>=0.1"],
     zip_safe=True
 )

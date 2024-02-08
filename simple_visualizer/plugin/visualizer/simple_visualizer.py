@@ -1,7 +1,7 @@
 import json
 from abc import ABC
 
-from core.services.visualizing import VisualizingService
+from Core.core.services.visualizing import VisualizingService
 from django.template import *
 
 
