@@ -8,7 +8,7 @@ setup(
     namespace_packages=["plugin", "plugin.xml_loader"],
 
     entry_points={
-        "loader":
+        "plugin.loader":
         ["xml-loader=plugin.xml_loader.loader:XMLLoader"]
     },
     install_requires=["sok-core>=0.1"],

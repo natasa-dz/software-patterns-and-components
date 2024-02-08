@@ -1,5 +1,5 @@
-from Core.core.models import Vertex, Graph, Edge, Forest
-from Core.core.services.loading import LoadingService
+from core.models import Vertex, Graph, Edge, Forest
+from core.services.loading import LoadingService
 import xml.etree.ElementTree as ET
 
 

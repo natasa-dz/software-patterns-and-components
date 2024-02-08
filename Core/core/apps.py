@@ -24,8 +24,9 @@ def load_visualizers():
     return visualizators
 
 def load_loaders():
-    oznaka = "plugin.loaders"
+    oznaka = "plugin.loader"
     loaders = load_plugins(oznaka)
+    print("[Debug] loaders list iz funkcije : ", loaders)
     return loaders
 
 def load_plugins(identifier):
