@@ -268,6 +268,9 @@ class Forest:
     def add_tree(self, tree):
         self.trees.append(tree)
 
+
+
+
 # # Example usage:
 #
 # # Create nodes with custom attributes

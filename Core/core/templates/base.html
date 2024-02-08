@@ -54,7 +54,7 @@
 
         // Make an AJAX request to trigger the simple_visualization view
         $.ajax({
-            url: "{% url 'simple_visualization' %}",
+            url: "{% url 'simple_visualization_data_processing' %}",
             method: "POST",
             data: {
                 loader: loader,
@@ -64,7 +64,7 @@
             },
             success: function (response) {
                 // Handle successful response, e.g., render the visualization
-                renderVisualization(response.visualization_data);
+                renderVisualization(response.visualization_data, response.forest);
             },
             error: function (xhr, status, error) {
                 // Handle error
@@ -74,9 +74,10 @@
     });
 
     // Function to render the visualization data
-    function renderVisualization(visualizationData) {
+    function renderVisualization(visualizationData, forest) {
         // Add your visualization rendering code here
         console.log("Visualization data:", visualizationData);
+        console.log("Forest: ", forest)
     }
 </script>
 
