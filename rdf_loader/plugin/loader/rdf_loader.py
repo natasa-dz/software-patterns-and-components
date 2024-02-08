@@ -3,7 +3,7 @@ from abc import ABC
 from rdflib import URIRef, RDF, RDFS, BNode, OWL, Graph as RdfGraph
 from core.models import Graph as CoreGraph, Vertex, Edge
 
-from Core.core.services.loading import LoadingService
+from core.services.loading import LoadingService
 
 class RdfParser(LoadingService, ABC):
 

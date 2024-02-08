@@ -1,10 +1,17 @@
 import json
+from abc import ABC
 
 from core.services.visualizing import VisualizingService
 from django.template import *
 
 
-class SimpleVisualizer(VisualizingService):
+class SimpleVisualizer(VisualizingService, ABC):
+
+    def name(self):
+        return "Simple Visualizer"
+
+    def id(self):
+        return "Simple graph"
 
     def visualize(self, graph, request):
         # Initialize data structures for storing nodes and edges

@@ -33,7 +33,9 @@ def load_loaders():
 def load_plugins(identifier):
     list_to_load = []
     for ep in pkg_resources.iter_entry_points(group=identifier):
+        print("Load plugins: ", ep)
         p = ep.load()
+        print("P:", p)
         plugin = p()
         list_to_load.append(plugin)
     return list_to_load
