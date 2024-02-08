@@ -4,6 +4,6 @@ from core import views
 
 urlpatterns = [
     path('', views.base, name='base'),
-    path('parse/', views.parse, name='parse'),
-    path('index/', views.index, name='index')
+    path('simple-visualization/', views.simple_visualization, name='simple_visualization'),
+
 ]

@@ -83,22 +83,6 @@ class Vertex:
     def degree(self):
         return len(self._edges)
 
-    def add_attribute(self, key, value):
-        self._attributes[key] = value
-
-    def add_edge(self, e):
-        already_existing = self.contains_edge(e)
-        if already_existing:
-            self._edges[self._edges.index(already_existing)] = e
-        else:
-            self._edges.append(e)
-
-    def contains_edge(self, e):
-        for edge in self._edges:
-            if e == edge:
-                return edge
-        return None
-
     def __eq__(self, other):
         if isinstance(other, Vertex):
             if self._attributes.keys() != other._attributes.keys():

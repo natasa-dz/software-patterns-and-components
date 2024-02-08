@@ -19,14 +19,13 @@ class CoreConfig(AppConfig):
         print("[Debug] data: ", self.data)
 
 def load_visualizers():
-    oznaka = "plugin.visualizators"
+    oznaka = "plugin.visualizer"
     visualizators = load_plugins(oznaka)
     return visualizators
 
 def load_loaders():
     oznaka = "plugin.loader"
     loaders = load_plugins(oznaka)
-    print("[Debug] loaders list iz funkcije : ", loaders)
     return loaders
 
 def load_plugins(identifier):
@@ -36,8 +35,6 @@ def load_plugins(identifier):
         plugin = p()
         list_to_load.append(plugin)
     return list_to_load
-
-
 def load_files_from_directory(directory_path):
     try:
         # List all files in the directory
