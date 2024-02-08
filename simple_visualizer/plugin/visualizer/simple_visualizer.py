@@ -6,7 +6,7 @@ from django.template import *
 
 
 class SimpleVisualizer(VisualizingService, ABC):
-
+    @property
     def name(self):
         return "Simple Visualizer"
 

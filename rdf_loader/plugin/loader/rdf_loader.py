@@ -12,11 +12,13 @@ class RdfParser(LoadingService, ABC):
         self.vertices = {}
         self.edges = set()
 
+
     def load(self, file_path):
         self.load_from_file(file_path)
 
+    @property
     def name(self):
-        return "RDF Data Loading"
+        return "RdfGraphLoading"
 
     def id(self):
         return 1

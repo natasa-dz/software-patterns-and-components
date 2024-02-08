@@ -12,7 +12,7 @@
                 <label for="data-type-selector">Select type of data to parse: </label>
                 <select id="data-type-selector" style="width: 160px;">
                     {% for loader in loaders %}
-                        <option value="{{ loader.name }}">{{ loader.name }}</option>
+                        <option value="{{ loader.name}}">{{ loader.name }}</option>
                     {% endfor %}
                 </select>
                 <label for="data-content-selector" >Select which file to parse: </label>
@@ -45,11 +45,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
-    // JavaScript code to handle "Start parse" button click event
+
     $("#start-parsing").on("click", function () {
+        var visualizer= $("#visualizator-type-selector").val();
         var loader = $("#data-type-selector").val();
         var file = $("#data-content-selector").val();
         var csrf_token = "{{ csrf_token }}";  // Add CSRF token if needed
+
+        console.log("Visualizer: ", visualizer);
+        console.log("Loader: ", loader);
+        console.log("File: ", file);
 
 
         // Make an AJAX request to trigger the simple_visualization view
@@ -57,6 +62,7 @@
             url: "{% url 'simple_visualization' %}",
             method: "POST",
             data: {
+                visualizer: visualizer,  // Use the correct ID for visualizer
                 loader: loader,
                 file: file,
                 csrfmiddlewaretoken: csrf_token
