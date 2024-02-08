@@ -7,7 +7,7 @@ setup(
     packages=find_packages(),
     namespace_packages=["plugin", "plugin.loader"],
      entry_points={
-        "loader":
+        "plugin.loader":
         ["rdf-loader=plugin.loader.rdf_loader:RdfParser"]
     },
     install_requires=["sok-core>=0.1", "rdflib"],

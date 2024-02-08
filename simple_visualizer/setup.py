@@ -7,7 +7,7 @@ setup(
     packages=find_packages(),
     namespace_packages=["plugin", "plugin.visualizer"],
     entry_points={
-        'visualizer':
+        'plugin.visualizer':
         ['simple-visualizer=plugin.visualizer.simple_visualizer:SimpleVisualizer']
     },
     install_requires=["sok-core>=0.1"],

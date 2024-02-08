@@ -16,7 +16,7 @@ class RdfParser(LoadingService, ABC):
         self.load_from_file(file_path)
 
     def name(self):
-        return "RdfGraphLoading"
+        return "RDF Data Loading"
 
     def id(self):
         return 1

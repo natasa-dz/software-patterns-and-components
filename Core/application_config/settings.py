@@ -28,10 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-print("Paths:", sys.path)
-
-
 # Application definition
 
 INSTALLED_APPS = [
