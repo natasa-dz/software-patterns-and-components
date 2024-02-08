@@ -22,26 +22,23 @@ def base(request):
     files = apps.get_app_config('core').data
     visualizers = apps.get_app_config('core').visualizers
     loaders = apps.get_app_config('core').loaders
-    print("Outgoing loaders: ", loaders)
-    print("Outgoing visualizers: ", visualizers)
-    print("[Debug] files that are going to html: ", files)
+    # print("Outgoing loaders: ", loaders)
+    # print("Outgoing visualizers: ", visualizers)
+    # print("[Debug] files that are going to html: ", files)
     return render(request, 'base.html', {'title': title, 'data': files, 'visualizers': visualizers, 'loaders': loaders})
 
 
 def get_visualizer(visualizer_name):
     visualizers = apps.get_app_config('core').visualizers
-    print("Visualizers: ", visualizers)
     for v in visualizers:
         print("V name: ", v.name)
-        if v.name() == visualizer_name:
+        if v.name == visualizer_name:
             return v
     return None
 
 
-# TODO: SOLVE GET LOADER NAME MISMATCH!!!!
 def get_loader(loader_name):
     loaders = apps.get_app_config('core').loaders
-    print("Loaders: ", loaders)
     for l in loaders:
         print("L name: ", l.name)
         if l.name() == loader_name:
@@ -54,7 +51,9 @@ def get_graph(loader, file_name):
         if loader.name() == "RdfGraphLoading":
             parser = RdfParser()
             parser.load_from_file(file_name)
-            return parser.create_graph()
+            graph = parser.create_graph()
+            print("Number of edges: ", len(graph.edges))
+            return graph
 
         # TODO: dodaj kada je xmlLoader
         # else:
@@ -62,26 +61,29 @@ def get_graph(loader, file_name):
     return None
 
 
-def simple_visualization(request):
+def simple_visualization_data_processing(request):
     if request.method == 'POST':
 
         visualizer_name = request.POST.get('visualizer')
-        print("Visualizer name: ", visualizer_name)
         visualizer = get_visualizer(visualizer_name)
 
         loader_name = request.POST.get('loader')
-        print("Loader name: ", loader_name)
         loader = get_loader(loader_name)
 
         file_name = request.POST.get('file')
         file_path = "..//data/" + file_name
 
         print("---------------- SIMPLE VISUALIZATION ------------------------")
-
-        print('VISUALIZER: ', visualizer)
-        print('LOADER: ', loader)
-        print('FILE NAME: ', file_name)
         graph = get_graph(loader, file_path)
+        print("Graph edges from Graph itself: ")
+        for e in graph.edges:
+            print(e)
+        print("-------------------------------------------------------------")
+        for vertex_id, vertex in graph.vertices.items():
+            print(f"Vertex ID: {vertex_id}")
+        print("Edges:")
+        for edge in graph.edges:
+            print(f"Start: {edge.start.id}, End: {edge.end.id}, Label: {edge.label}")
 
         # Render the visualization
         if visualizer and graph:

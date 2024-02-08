@@ -59,7 +59,7 @@
 
         // Make an AJAX request to trigger the simple_visualization view
         $.ajax({
-            url: "{% url 'simple_visualization' %}",
+            url: "{% url 'simple_visualization_data_processing' %}",
             method: "POST",
             data: {
                 visualizer: visualizer,  // Use the correct ID for visualizer
