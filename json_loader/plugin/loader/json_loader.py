@@ -38,7 +38,7 @@ class JSONGraphLoader(LoadingService):
 
 if __name__ == '__main__':
     loader = JSONGraphLoader()
-    with open("C://SIIT//SIIT-treca godina//Zimski semestar//Softverski obrasci i komponente//Software-patterns-and-components//data//test2.json") as file:
+    with open("/Users/uros/Software-patterns-and-components/data/test2.json") as file:
         data = loader.load(file)
     graph = loader.create_graph(data)
     graph.print_graph()

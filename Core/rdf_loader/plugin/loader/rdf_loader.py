@@ -1,7 +1,7 @@
 from abc import ABC
 
 from rdflib import URIRef, RDF, RDFS, BNode, OWL, Graph as RdfGraph
-from core.models import Graph as CoreGraph, Vertex, Edge
+from Core.core.models import Graph as CoreGraph, Vertex, Edge
 
 from Core.core.services.loading import LoadingService
 
@@ -74,7 +74,7 @@ class RdfParser(LoadingService, ABC):
 
 if __name__ == '__main__':
     rdf_parser = RdfParser()
-    rdf_parser.load_from_file("C://SIIT//SIIT-treca godina//Zimski semestar//Softverski obrasci i komponente//Software-patterns-and-components//data//acyclicData.nt")
+    rdf_parser.load_from_file("/Users/uros/Software-patterns-and-components/data/acyclicData.nt")
     parsed_graph = rdf_parser.create_graph()
     rdf_nodes, rdf_edges=rdf_parser.count_nodes_and_edges(parsed_graph)
     print("Counted nodes: ", rdf_nodes)
