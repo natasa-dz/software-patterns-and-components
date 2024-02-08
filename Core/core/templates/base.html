@@ -24,6 +24,7 @@
                 <label for="visualizator-type-selector">Select type of visualization: </label>
                 <select id="visualizator-type-selector" style="width: 160px;">
                     {% for visualizer in visualizers %}
+                    <!-- izmenila sam u visualizer.identifier umesto samo viusalizer-->
                         <option value="{{ visualizer }}">{{ visualizer.name }}</option>
                     {% endfor %}
                 </select>
@@ -40,5 +41,21 @@
                 </div>
             </div>
         </div>
+    <script src="{% static 'render_simple_visualizer.js' %}"></script>
+
+    <script>
+    // JavaScript code to show/hide simple visualization based on selected option
+    document.getElementById("visualizator-type-selector").addEventListener("change", function() {
+        var selectedOption = this.value;
+        if (selectedOption === "visualization_simple") {
+            document.getElementById("simple-visualization").style.display = "block";
+            document.getElementById("other-visualization").style.display = "none";
+        } else {
+            document.getElementById("simple-visualization").style.display = "none";
+            document.getElementById("other-visualization").style.display = "block";
+        }
+    });
+</script>
+
     </body>
 </html>

@@ -42,4 +42,4 @@ if __name__ == '__main__':
         data = loader.load(file)
     graph = loader.create_graph(data)
     graph.print_graph()
-#    loader.display_graph(graph)
+#    visualizer.display_graph(graph)

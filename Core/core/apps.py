@@ -19,13 +19,15 @@ class CoreConfig(AppConfig):
         print("[Debug] data: ", self.data)
 
 def load_visualizers():
-    oznaka = "plugin.visualizators"
+    oznaka = "visualizer"
     visualizators = load_plugins(oznaka)
+    print("Viusalizators:", visualizators)
     return visualizators
 
 def load_loaders():
-    oznaka = "plugin.loaders"
+    oznaka = "loader"
     loaders = load_plugins(oznaka)
+    print("Loaders: ", loaders)
     return loaders
 
 def load_plugins(identifier):

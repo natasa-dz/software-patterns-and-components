@@ -13,3 +13,6 @@ def base(request):
     files = apps.get_app_config('core').data
     print("[Debug] files that are going to html: ", files)
     return render(request, 'base.html', {'title': title, 'data': files})
+
+def simple_visualization(request):
+    pass
