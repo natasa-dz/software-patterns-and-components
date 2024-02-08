@@ -16,7 +16,7 @@ class RdfParser(LoadingService, ABC):
         self.load_from_file(file_path)
 
     def name(self):
-        return "RDF Data Loading"
+        return "RdfGraphLoading"
 
     def id(self):
         return 1
@@ -34,13 +34,16 @@ class RdfParser(LoadingService, ABC):
         return core_graph
 
     def process_subject(self, subject, predicate, obj, core_graph, parent_label=None):
+        # print(f"Processing subject: {subject}, predicate: {predicate}, object: {obj}")
+
         start_vertex = self.create_or_get_vertex(subject, core_graph)
         end_vertex = self.create_or_get_vertex(obj, core_graph)
 
-        if start_vertex and end_vertex and start_vertex != end_vertex:
-            # If neither start nor end vertex is a blank node and they are not the same, create an edge
+        if start_vertex.id and end_vertex.id and start_vertex.id != end_vertex.id:
             edge_label = str(predicate) if predicate else None
-            core_graph.edges.append(Edge(start_vertex, end_vertex, label=edge_label))
+            edge = Edge(start_vertex, end_vertex, label=edge_label)
+            print(f"Adding edge: {edge}")
+            core_graph.edges.append(edge)
 
 
         if isinstance(obj, BNode):
@@ -86,12 +89,10 @@ if __name__ == '__main__':
     rdf_parser = RdfParser()
     rdf_parser.load_from_file("C://SIIT//SIIT-treca godina//Zimski semestar//Softverski obrasci i komponente//Software-patterns-and-components//data//cyclicRDF200Nodes.nt")
     parsed_graph = rdf_parser.create_graph()
-    rdf_nodes, rdf_edges=rdf_parser.count_nodes_and_edges(parsed_graph)
-    # print("Counted nodes: ", rdf_nodes)
-    # print("Counted edges:", rdf_edges)
+    rdf_nodes, rdf_edges = rdf_parser.count_nodes_and_edges(parsed_graph)
 
+    print("Number of edges: ", rdf_edges)
 
-    # Iterate over the parsed graph's vertices
     print("\nVertices with edges:")
     for vertex_id, vertex in parsed_graph.vertices.items():
         print(f"Vertex ID: {vertex_id}")
@@ -99,4 +100,11 @@ if __name__ == '__main__':
         for edge in vertex.edges:
             print(f"Start: {edge.start.id}, End: {edge.end.id}, Label: {edge.label}")
 
-
+    # Access the parsed graph, vertices, and edges
+    # print("Vertices:")
+    # for vertex_id, vertex in parsed_graph.vertices.items():
+    #         print(f"Vertex ID: {vertex_id}")
+    #
+    # print("Edges:")
+    # for edge in parsed_graph.edges:
+    #     print(f"Start: {edge.start._id}, End: {edge.end._id}")
