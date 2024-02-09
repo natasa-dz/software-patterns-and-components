@@ -1,31 +1,55 @@
-.center{
-    background: aqua;
-}
-
-.header{
-    background: rgba(245, 209, 209, 0.78);
+.center {
+    /* Center the content horizontally */
     display: flex;
+    justify-content: center;
 }
 
-.graphs{
+.header {
+    /* Styling for the header */
+    background: #2c786c;
     display: flex;
+    align-items: center; /* Center items vertically */
+    padding: 10px;
 }
 
-.left{
+.graphs {
+    /* Styling for the graph section */
+    display: flex;
+    justify-content: space-between; /* Space out the left and right sections */
+}
+
+.left {
+    /* Styling for the left section */
     width: 40%;
-    background: burlywood;
+    background: #f8b400;
+    padding: 10px;
 }
 
-.right{
-    width: 60%;
-    background: blueviolet;
+#right {
+    /* Styling for the right section */
+    width: 75%;
+    background: white;
+    padding: 10px;
 }
 
-/* Example CSS for graph styling */
+/* Example CSS for graph container */
+#graph-container {
+    width: 100%;
+    height: 80vh;
+    border: 1px solid #419698;
+}
+
+/* Example CSS for nodes */
 .node {
     /* Define styles for nodes */
+    fill: #fde9df; /* Change fill color */
+    stroke: #ffd6a4; /* Add stroke color */
+    stroke-width: 2px; /* Add stroke width */
 }
 
+/* Example CSS for edges */
 .edge {
     /* Define styles for edges */
+    stroke: #0881a3; /* Change edge color */
+    stroke-width: 2px; /* Add edge width */
 }
