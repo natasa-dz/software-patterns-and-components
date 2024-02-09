@@ -39,8 +39,8 @@ class SimpleVisualizer(VisualizingService, ABC):
             for vertex_id, vertex in graph.vertices.items():
                 for edgeOfVertex in vertex.edges:
                     edge_data = {
-                        "source": edgeOfVertex.start.id,
-                        "target": edgeOfVertex.end.id,
+                        "source": edgeOfVertex.start,
+                        "target": edgeOfVertex.end,
                         "label": edgeOfVertex.label if edgeOfVertex.label else "Edge"  # Example label, you can customize this
                     }
                     edges.append(edge_data)

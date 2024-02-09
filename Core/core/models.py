@@ -182,12 +182,6 @@ class Graph(object):
 
 
 class Node(object):
-    # class Vertex:
-    # _id_counter = 0
-    # def __init__(self, id=None):
-    #     self._attributes = {}
-    #     self._id = id or self._generate_unique_id()
-    #     self._edges = []
     def __init__(self, vertex: Vertex, recursive=False):
         self.attributes = vertex.attributes
         self.id = vertex.id
@@ -226,12 +220,13 @@ class Tree:
 
     def create_subtree(self, list_of_edges, parent_node):
         for edge in list_of_edges:
-            if edge.end not in self.containing_node_ids:
+            if edge.end not in self.containing_node_ids:    #ako jeste onda je vec ubacena u stablo i onda stavljamo recursive=True
 
                 end_vertex = self.find_vertex_by_id(edge.get_end())
                 # if end_vertex is None:  #this if is added for logic when having recursion
                 #     child = Node(Vertex(edge.start), True)
                 # else:
+
                 child = Node(end_vertex)
                 self.remove_vertex_by_id(child.id)
 
@@ -245,6 +240,10 @@ class Tree:
                 parent_node.add_child(child)
 
     def find_vertex_by_id(self, lookup_id) -> Vertex:
+        if isinstance(lookup_id, Vertex):
+            for vertex in self.list_of_vertices:
+                if vertex.id == lookup_id.id:
+                    return vertex
         for vertex in self.list_of_vertices:
             if vertex.id == lookup_id:
                 return vertex
@@ -277,7 +276,8 @@ class Forest:
 
     def turn_graph_to_list(self):
         list_to_return = []
-        for vertex in self.graph.vertices.values():
+        sorted_graph_vertices = {k: self.graph.vertices[k] for k in sorted(self.graph.vertices.keys())}
+        for vertex in sorted_graph_vertices.values():
             to_add = copy.deepcopy(vertex)
             list_to_return.append(to_add)
         return list_to_return
