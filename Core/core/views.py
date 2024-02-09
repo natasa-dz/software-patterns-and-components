@@ -9,7 +9,7 @@ from django.shortcuts import render
 from plugin.loader.rdf_loader import RdfParser
 
 
-# from plugin.xml_loader.loader import XmlLoader
+from plugin.xml_loader.loader import XMLLoader
 
 #TODO:Solve the problem with the edges!
 def index(request):
@@ -56,8 +56,12 @@ def get_graph(loader, file_name):
             return graph
 
         # TODO: dodaj kada je xmlLoader
-        # else:
-        #     parser = XmlLoader()
+        else:
+            parser = XMLLoader()
+            root = parser.load(file_name)
+            graph = parser.create_graph(root)
+            return graph
+
     return None
 
 
@@ -101,6 +105,6 @@ def are_parser_and_file_type_matching(loader, file):
         if loader.name() == "RdfGraphLoading" and file.endswith('.nt'):
             print("Returned true")
             return True
-        elif file.endswith('.xml') and loader.name == "":
+        elif file.endswith('.xml') and loader.name() == "XML Loader":
             return True
     return False

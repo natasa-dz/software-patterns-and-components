@@ -92,7 +92,11 @@ class XMLLoader(LoadingService):
                 if edge.end in map_to_be_changed.keys():
                     edge.end = map_to_be_changed[edge.end]
 
-        graph.vertices = set_of_vertices
+        ret_map_vertices = {}
+        for vertex in set_of_vertices:
+            ret_map_vertices[vertex.id] = vertex
+
+        graph.vertices = ret_map_vertices
 
 
 if __name__ == "__main__":
