@@ -21,7 +21,7 @@ class SimpleVisualizer(VisualizingService, ABC):
             # Define attributes for the node
             node_data = {
                 "id": vertex_id,
-                "label": f"Node {vertex_id}"
+                # "label": f"Node {vertex_id}"
             }
             nodes[vertex_id] = node_data
 
@@ -31,8 +31,8 @@ class SimpleVisualizer(VisualizingService, ABC):
             edge_data = {
                 "source": edge.start.id,
                 "target": edge.end.id,
-                "label": edge.label if edge.label else "Edge"  # Example label, you can customize this
             }
+
             edges.append(edge_data)
 
         # Assemble the visualization data

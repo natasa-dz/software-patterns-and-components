@@ -29,15 +29,25 @@
                     {% endfor %}
                 </select>
                 <button id="start-parsing" type="button">Start parse</button>
+                <button id="reset-button" type="button">Reset</button>
+
+
             </div>
             <div class="graphs">
                 <div class="left">
                     {% block treeView %}
                     {% endblock %}
                 </div>
-                <div class="right">
+                <div id="right">
                     {% block graphView %}
                     {% endblock %}
+                    <div id="graph-container"></div>
+                    <button id="zoom-in-button">Zoom in</button>
+                    <button id="zoom-out-button">Zoom out</button>
+                    <button id="reset-zoom-button">Reset zoom</button>
+                    <button id="pan-left-button">Pan left</button>
+                    <button id="pan-right-button">Pan right</button>
+
                 </div>
             </div>
         </div>
@@ -57,7 +67,6 @@
         console.log("File: ", file);
 
 
-        // Make an AJAX request to trigger the simple_visualization view
         $.ajax({
             url: "{% url 'simple_visualization_data_processing' %}",
             method: "POST",
@@ -79,15 +88,177 @@
         });
     });
 
-    // Function to render the visualization data
-    function renderVisualization(visualizationData) {
-        // Add your visualization rendering code here
-        console.log("Visualization data:", visualizationData);
+function renderVisualization(visualizationData) {
+    d3.select("#graph-container").selectAll("*").remove();
+    const svg = d3.select("#graph-container")
+        .append("svg")
+        .attr("width", "100%")
+        .attr("height", "100%")
+        .append("g");
+
+let zoom = d3.zoom()
+	.scaleExtent([0.25, 10])
+	.on('zoom', handleZoom);
+
+function updateData() {
+	data = [];
+	for(let i=0; i<numPoints; i++) {
+		data.push({
+			id: i,
+			x: Math.random() * width,
+			y: Math.random() * height
+		});
+	}
+}
+    function initZoom() {
+        d3.select('svg')
+            .call(zoom);
     }
+    initZoom();
+
+    function handleZoom(e) {
+        d3.select('svg g')
+            .attr('transform', e.transform);
+    }
+
+    function zoomIn() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.scaleBy, 2);
+    }
+
+    function zoomOut() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.scaleBy, 0.5);
+    }
+
+    function resetZoom() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.scaleTo, 1);
+    }
+
+    function center() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.translateTo, 0.5 * width, 0.5 * height);
+    }
+
+    function panLeft() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.translateBy, -50, 0);
+    }
+
+    function panRight() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.translateBy, 50, 0);
+    }
+
+
+    // Add mouseover event for nodes
+    const tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    let nodeIndex = 0; // Initialize index variable
+
+    const link = svg.append("g")
+        .selectAll("line")
+        .data(visualizationData.edges)
+        .enter().append("line")
+        .style("stroke", "#004445")
+        .style("stroke-width", "2px");
+
+    const node = svg.append("g")
+        .selectAll("g")
+        .data(visualizationData.nodes)
+        .enter().append("g")
+        .on("mouseover", function (event, d) {
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+            tooltip.html("Hovered node: " + d.id)
+                .style("left", (event.pageX) + "px")
+                .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mouseout", function (d) {
+            tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+        })
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended))
+        .on("click", function (event, d) { // Show message on node click
+            alert("You clicked on node: " + d.id)});
+
+
+    node.append("circle")
+        .attr("r", 8)
+        .style("fill", "#fde9df")
+        .style("stroke", "#ffd6a4");
+
+    node.append("text") // Append text for node ID
+    .attr("dy", -12) // Position text above the circle
+    .attr("text-anchor", "middle") // Center text horizontally
+    .text(() => "ID: " + ++nodeIndex); // Set text content to "ID: " followed by the incremented index
+
+    const simulation = d3.forceSimulation(visualizationData.nodes)
+        .force("link", d3.forceLink(visualizationData.edges).id(d => d.id))
+        .force("charge", d3.forceManyBody())
+        .force("center", d3.forceCenter(400, 300))
+        .on("tick", ticked);
+
+    function ticked() {
+        link
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
+
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+    }
+
+    function dragstarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+    }
+
+    function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+    }
+
+    function dragended(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+    }
+
+    // Add reset button
+    const resetButton = d3.select("#reset-button");
+    resetButton.on("click", function () {
+        svg.selectAll("*").remove();
+    });
+
+    // Call the zoom-related functions based on user actions
+    document.getElementById('zoom-in-button').addEventListener('click', zoomIn);
+    document.getElementById('zoom-out-button').addEventListener('click', zoomOut);
+    document.getElementById('reset-zoom-button').addEventListener('click', resetZoom);
+
+    // Call the pan-related functions based on user actions
+    document.getElementById('pan-left-button').addEventListener('click', panLeft);
+    document.getElementById('pan-right-button').addEventListener('click', panRight);
+    document.getElementById('center-button').addEventListener('click', center);
+
+
+}
+
 </script>
-
-
-
-
     </body>
 </html>
