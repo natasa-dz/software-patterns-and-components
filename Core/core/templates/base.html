@@ -32,8 +32,8 @@
             </div>
             <div class="graphs">
                 <div class="left">
-                    {% block treeView %}
-                    {% endblock %}
+                        <div id="jstree">
+                        </div>
                 </div>
                 <div class="right">
                     {% block graphView %}
@@ -44,8 +44,13 @@
 <!-- Include jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- Include jstree library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
 <script>
 
+    parsedForest = []
     $("#start-parsing").on("click", function () {
         var visualizer= $("#visualizator-type-selector").val();
         var loader = $("#data-type-selector").val();
@@ -84,7 +89,138 @@
         // Add your visualization rendering code here
         console.log("Visualization data:", visualizationData);
         console.log("Forest: ", forest)
+        var trees = [];
+        for (var tree of forest) {
+            console.log("AFTER JSON PARSE:", JSON.parse(tree));
+            trees.push(JSON.parse(tree)); // Add parsed tree to the trees list
+        }
+        console.log("TREES", trees)
+        parsedForest = trees.map(transformData)
+        console.log("parsirana suma:",parsedForest)
+
+
+      // var treeData = [];
+      //
+      //   for(tree of forest) {
+      //       console.log("Drvo svako zasebno:", tree)
+      //       createTree(tree, treeData);
+      //   }
+
+      // console.log("Tree: ", treeData)
+
+      // Initialize jstree with the created data
+      $('#jstree').jstree({
+        'core': {
+          'data': trees.map(transformData)
+        }
+      });
+
     }
+
+    function traverseAllParsedTrees(searchedNodeId){
+        var subtree = null
+        for (tree in parsedForest){
+            subtree = findSubtreeForInsert(tree, searchedNodeId)
+            if (subtree != null){
+                return subtree
+            }
+        }
+        return subtree
+    }
+
+    function findSubtreeForInsert(node, searchedNodeId) {
+    var retVal = null;
+    // Base case: if the node is null or undefined, return
+    if (!node) {
+        return;
+    }
+
+    if (node.id === searchedNodeId){
+        return node;
+    }
+
+    // Recursively traverse children nodes
+    if (node.children && node.children.length > 0) {
+        node.children.forEach(function(child) {
+            retVal = findSubtreeForInsert(child);
+        });
+    }
+    return retVal
+}
+
+   $('#jstree').on('open_node.jstree', function (e, data) {
+    // Get the opened node
+        var openedNode = data.node;
+        for (let key in openedNode.children){
+            let child = openedNode.children[key]
+            console.log("deca:", child)
+            // if (child.recursive){
+            //     console.log("nasao rekurzivno dete")
+            //     tochange = traverseAllParsedTrees(child.id)
+            //     console.log("====Sub tree koje treba da se ubaci: ", tochange)
+            // }
+        }
+
+        // Perform actions when the node is opened
+        console.log("Node opened:", openedNode);
+        console.log("Node opened children:", openedNode.children);
+
+    });
+
+    $('#jstree').on('close_node.jstree', function (e, data) {
+        // Get the closed node
+        var closedNode = data.node;
+
+        // Perform actions when the node is closed
+        console.log("Node closed:", closedNode);
+    });
+
+     // Recursively transform JSON data into jstree-compatible format
+  function transformData(node) {
+        console.log("USLO U DBR FJU")
+    var jstreeNode = {
+        id: node.id,
+        text: node.id,
+        recursive: node.recursive,
+        children: []
+    };
+
+    if (node.children && node.children.length > 0) {
+      node.children.forEach(function(child) {
+        jstreeNode.children.push(transformData(child));
+      });
+    }
+
+    return jstreeNode;
+  }
+
+     function createTree(data, parent) {
+        console.log("USLO U DBR FJU")
+      if (data.children) {
+        var node = {
+          id: data.id.toString(),
+          text: data.attributes,
+          children: []
+        };
+        console.log("SINGLE NODE", node)
+
+        // Create children nodes recursively
+        data.children.forEach(function(child) {
+          createTree(child, node);
+        });
+
+        parent.push(node);
+      } else {
+          console.log("DATA:", data)
+        parent.push({
+          id: data.id.toString(),
+          text: data.attributes
+        });
+        console.log("PARENT:", parent)
+      }
+    }
+
+
 </script>
 
 

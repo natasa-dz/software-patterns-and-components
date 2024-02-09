@@ -29,7 +29,7 @@ class XMLLoader(LoadingService):
         if graph is None:
             graph = Graph()
 
-        id_generator = 0
+        id_generator = 1
         object_name = ""
 
         def process_node(node, parent_vertex=None):

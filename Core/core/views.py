@@ -55,8 +55,6 @@ def get_graph(loader, file_name):
             graph = parser.create_graph()
             print("Number of edges: ", len(graph.edges))
             return graph
-
-        # TODO: dodaj kada je xmlLoader
         else:
             parser = XMLLoader()
             root = parser.load(file_name)
@@ -102,6 +100,8 @@ def simple_visualization_data_processing(request):
     # Handle invalid requests or errors
     return JsonResponse({'error': 'Invalid request'})
 
+# def parse_tree(request):
+#     return render(request, 'tree.html')
 
 def are_parser_and_file_type_matching(loader, file):
     if loader and file:
