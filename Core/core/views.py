@@ -2,6 +2,7 @@ import os
 from datetime import time
 
 import pkg_resources
+from core.models import Forest
 from django.apps import apps
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -79,6 +80,7 @@ def simple_visualization_data_processing(request):
 
         print("---------------- SIMPLE VISUALIZATION ------------------------")
         graph = get_graph(loader, file_path)
+        forest = Forest(graph)
         print("Graph edges from Graph itself: ")
         for e in graph.edges:
             print(e)
@@ -94,7 +96,8 @@ def simple_visualization_data_processing(request):
             # Assuming 'visualizer.visualize' returns the visualization data
             visualization_data = visualizer.visualize(graph, request)
             print("Visualization data rendered! ")
-            return JsonResponse({'visualization_data': visualization_data})
+            return JsonResponse({'visualization_data': visualization_data,
+                                 'forest': forest.to_dict()})
 
     # Handle invalid requests or errors
     return JsonResponse({'error': 'Invalid request'})

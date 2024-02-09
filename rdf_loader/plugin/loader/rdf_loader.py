@@ -1,7 +1,7 @@
 from abc import ABC
 
 from rdflib import URIRef, RDF, RDFS, BNode, OWL, Graph as RdfGraph
-from core.models import Graph as CoreGraph, Vertex, Edge
+from core.models import Graph as CoreGraph, Vertex, Edge, Forest
 
 from core.services.loading import LoadingService
 
@@ -87,7 +87,7 @@ class RdfParser(LoadingService, ABC):
 
 if __name__ == '__main__':
     rdf_parser = RdfParser()
-    rdf_parser.load_from_file("C://SIIT//SIIT-treca godina//Zimski semestar//Softverski obrasci i komponente//Software-patterns-and-components//data//cyclicRDF200Nodes.nt")
+    rdf_parser.load_from_file("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\acyclicRDF.nt")
     parsed_graph = rdf_parser.create_graph()
     rdf_nodes, rdf_edges = rdf_parser.count_nodes_and_edges(parsed_graph)
 
@@ -99,6 +99,10 @@ if __name__ == '__main__':
         print("Edges:")
         for edge in vertex.edges:
             print(f"Start: {edge.start.id}, End: {edge.end.id}, Label: {edge.label}")
+
+
+    forest = Forest(parsed_graph)
+    print(forest)
 
     # Access the parsed graph, vertices, and edges
     # print("Vertices:")

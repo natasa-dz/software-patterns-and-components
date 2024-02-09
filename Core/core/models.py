@@ -1,4 +1,5 @@
 import copy
+import json
 from typing import Dict, Any, List, Set
 
 
@@ -93,6 +94,9 @@ class Vertex:
         else:
             return False
         return True
+
+    def __hash__(self):
+        return hash(self.id)
 
 
 class Edge:
@@ -194,6 +198,14 @@ class Node(object):
         self.children.append(child_node)
 
 
+# Custom JSON encoder for TreeNode objects
+class NodeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Node):
+            return {'id': obj.id, 'children': obj.children, 'recursive': obj.recursive, 'attributes': obj.attributes}
+        return super().default(obj)
+
+
 class Tree:
     list_of_vertices: List[Vertex]
     root: Node
@@ -248,6 +260,9 @@ class Tree:
         else:
             self.root.add_child(node)
 
+    def serialize_tree(self, root):
+        return json.dumps(root, cls=NodeEncoder, indent=2)
+
 
 class Forest:
     graph: Graph
@@ -257,8 +272,15 @@ class Forest:
     def __init__(self, graph):
         self.trees = []
         self.graph = graph
-        self.list_of_graph_vertices = list(copy.deepcopy(graph.vertices))
+        self.list_of_graph_vertices = self.turn_graph_to_list()
         self.create_forest()
+
+    def turn_graph_to_list(self):
+        list_to_return = []
+        for vertex in self.graph.vertices.values():
+            to_add = copy.deepcopy(vertex)
+            list_to_return.append(to_add)
+        return list_to_return
 
     def create_forest(self):
         while len(self.list_of_graph_vertices) != 0:
@@ -268,8 +290,12 @@ class Forest:
     def add_tree(self, tree):
         self.trees.append(tree)
 
+    def to_dict(self):
+        dictionary = []
+        for i in range(len(self.trees)):
+            dictionary.append(self.trees[i].serialize_tree(self.trees[i].root))
 
-
+        return dictionary
 
 # # Example usage:
 #
