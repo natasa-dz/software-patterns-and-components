@@ -84,11 +84,13 @@
     });
 
 function renderVisualization(visualizationData) {
+    d3.select("#graph-container").selectAll("*").remove();
     const svg = d3.select("#graph-container")
         .append("svg")
         .attr("width", "100%")
         .attr("height", "100%")
         .append("g");
+
 
     // Define zoom behavior
     const zoom = d3.zoom()
@@ -187,6 +189,44 @@ function renderVisualization(visualizationData) {
     resetButton.on("click", function () {
         svg.selectAll("*").remove();
     });
+
+        // Add zoom in button
+    const zoomInButton = svg.append("g")
+        .attr("class", "zoom-button")
+        .attr("transform", "translate(" + (svg.attr("width") - 40) + "," + (svg.attr("height") - 40) + ")")
+        .on("click", function () {
+            svg.transition().call(zoom.scaleBy, 1.5);
+        });
+
+    zoomInButton.append("circle")
+        .attr("r", 12)
+        .attr("fill", "#419698")
+        .style("cursor", "pointer");
+
+    zoomInButton.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dy", 4)
+        .style("font-size", "20px")
+        .text("+");
+
+    // Add zoom out button
+    const zoomOutButton = svg.append("g")
+        .attr("class", "zoom-button")
+        .attr("transform", "translate(" + (svg.attr("width") - 40) + "," + (svg.attr("height") - 80) + ")")
+        .on("click", function () {
+            svg.transition().call(zoom.scaleBy, 0.75);
+        });
+
+    zoomOutButton.append("circle")
+        .attr("r", 12)
+        .attr("fill", "#419698")
+        .style("cursor", "pointer");
+
+    zoomOutButton.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dy", 4)
+        .style("font-size", "20px")
+        .text("-");
 }
 
 
