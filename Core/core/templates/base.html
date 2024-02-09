@@ -41,8 +41,13 @@
                 <div id="right">
                     {% block graphView %}
                     {% endblock %}
-                    <!-- UBACEN ID ZARAD RENDER PROBE!-->
                     <div id="graph-container"></div>
+                    <button id="zoom-in-button">Zoom in</button>
+                    <button id="zoom-out-button">Zoom out</button>
+                    <button id="reset-zoom-button">Reset zoom</button>
+                    <button id="pan-left-button">Pan left</button>
+                    <button id="pan-right-button">Pan right</button>
+
                 </div>
             </div>
         </div>
@@ -91,16 +96,67 @@ function renderVisualization(visualizationData) {
         .attr("height", "100%")
         .append("g");
 
+let zoom = d3.zoom()
+	.scaleExtent([0.25, 10])
+	.on('zoom', handleZoom);
 
-    // Define zoom behavior
-    const zoom = d3.zoom()
-        .scaleExtent([0.1, 10])
-        .on("zoom", function () {
-            svg.attr("transform", d3.event.transform);
-        });
+function updateData() {
+	data = [];
+	for(let i=0; i<numPoints; i++) {
+		data.push({
+			id: i,
+			x: Math.random() * width,
+			y: Math.random() * height
+		});
+	}
+}
+    function initZoom() {
+        d3.select('svg')
+            .call(zoom);
+    }
+    initZoom();
 
-    // Apply zoom behavior to SVG
-    svg.call(zoom);
+    function handleZoom(e) {
+        d3.select('svg g')
+            .attr('transform', e.transform);
+    }
+
+    function zoomIn() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.scaleBy, 2);
+    }
+
+    function zoomOut() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.scaleBy, 0.5);
+    }
+
+    function resetZoom() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.scaleTo, 1);
+    }
+
+    function center() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.translateTo, 0.5 * width, 0.5 * height);
+    }
+
+    function panLeft() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.translateBy, -50, 0);
+    }
+
+    function panRight() {
+        d3.select('svg')
+            .transition()
+            .call(zoom.translateBy, 50, 0);
+    }
+
 
     // Add mouseover event for nodes
     const tooltip = d3.select("body").append("div")
@@ -190,48 +246,18 @@ function renderVisualization(visualizationData) {
         svg.selectAll("*").remove();
     });
 
-        // Add zoom in button
-    const zoomInButton = svg.append("g")
-        .attr("class", "zoom-button")
-        .attr("transform", "translate(" + (svg.attr("width") - 40) + "," + (svg.attr("height") - 40) + ")")
-        .on("click", function () {
-            svg.transition().call(zoom.scaleBy, 1.5);
-        });
+    // Call the zoom-related functions based on user actions
+    document.getElementById('zoom-in-button').addEventListener('click', zoomIn);
+    document.getElementById('zoom-out-button').addEventListener('click', zoomOut);
+    document.getElementById('reset-zoom-button').addEventListener('click', resetZoom);
 
-    zoomInButton.append("circle")
-        .attr("r", 12)
-        .attr("fill", "#419698")
-        .style("cursor", "pointer");
+    // Call the pan-related functions based on user actions
+    document.getElementById('pan-left-button').addEventListener('click', panLeft);
+    document.getElementById('pan-right-button').addEventListener('click', panRight);
+    document.getElementById('center-button').addEventListener('click', center);
 
-    zoomInButton.append("text")
-        .attr("text-anchor", "middle")
-        .attr("dy", 4)
-        .style("font-size", "20px")
-        .text("+");
 
-    // Add zoom out button
-    const zoomOutButton = svg.append("g")
-        .attr("class", "zoom-button")
-        .attr("transform", "translate(" + (svg.attr("width") - 40) + "," + (svg.attr("height") - 80) + ")")
-        .on("click", function () {
-            svg.transition().call(zoom.scaleBy, 0.75);
-        });
-
-    zoomOutButton.append("circle")
-        .attr("r", 12)
-        .attr("fill", "#419698")
-        .style("cursor", "pointer");
-
-    zoomOutButton.append("text")
-        .attr("text-anchor", "middle")
-        .attr("dy", 4)
-        .style("font-size", "20px")
-        .text("-");
 }
-
-
-
-
 
 </script>
     </body>
