@@ -12,9 +12,9 @@ class CoreConfig(AppConfig):
     data = []
     displayed_graph = None
     chosen_visualizer = None
-
     #kad pritisnem isparsiram neki fajl, onda ovde mogu da upisem instancu grafa koji je trenutno kreiran
     def ready(self):
+        print("[Debug] ===============USLO U READY===============")
         self.data = load_files_from_directory("..\\data")
         self.visualizers = load_visualizers()
         self.loaders = load_loaders()
@@ -24,13 +24,11 @@ class CoreConfig(AppConfig):
 def load_visualizers():
     oznaka = "plugin.visualizer"
     visualizators = load_plugins(oznaka)
-    print("Viusalizators:", visualizators)
     return visualizators
 
 def load_loaders():
     oznaka = "plugin.loader"
     loaders = load_plugins(oznaka)
-    print("Loaders: ", loaders)
     return loaders
 
 def load_plugins(identifier):

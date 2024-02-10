@@ -1,25 +1,25 @@
 <tree>
-    <node id="1">
+    <node>
         <name>Root</name>
         <children>
-            <node id="2">
+            <node>
                 <name>Child 1</name>
                 <children>
-                    <node id="4">
+                    <node>
                         <name>Grandchild 1</name>
                     </node>
-                    <node id="5">
+                    <node>
                         <name>Grandchild 2</name>
                     </node>
-                    <node id="1">
+                    <node>
                         <name>Root</name>
                     </node>
                 </children>
             </node>
-            <node id="3">
+            <node>
                 <name>Child 2</name>
                 <children>
-                    <node id="6">
+                    <node>
                         <name>Grandchild 3</name>
                     </node>
                 </children>

@@ -1,4 +1,4 @@
-from Core.core.models import Vertex, Graph, Edge
+from core.models import Vertex, Graph, Edge, Forest
 from core.services.loading import LoadingService
 import xml.etree.ElementTree as ET
 
@@ -29,7 +29,7 @@ class XMLLoader(LoadingService):
         if graph is None:
             graph = Graph()
 
-        id_generator = 0
+        id_generator = 1
         object_name = ""
 
         def process_node(node, parent_vertex=None):
@@ -42,6 +42,8 @@ class XMLLoader(LoadingService):
                 id_generator += 1
                 for attr in node.attrib:
                     v.add_attribute(attr, node.attrib[attr])
+                    #todo: ako mi ostane vremena ovde treba znati da kad imam <node attributes>text</node> mn text totalno preskoci
+                    # nije ogromna greska, ako ne stignem totalno cu zanemariti, ali ako stignem mozda probati da prepravim samo to
 
             if node.text.strip() != "" and parent_vertex != None:       #uvek ce biti prazno za pocetak objekta
                 node.text = " ".join(node.text.split())
@@ -90,15 +92,21 @@ class XMLLoader(LoadingService):
                 if edge.end in map_to_be_changed.keys():
                     edge.end = map_to_be_changed[edge.end]
 
-        graph.vertices = set_of_vertices
+        ret_map_vertices = {}
+        for vertex in set_of_vertices:
+            ret_map_vertices[vertex.id] = vertex
+
+        graph.vertices = ret_map_vertices
 
 
 if __name__ == "__main__":
     loader = XMLLoader()
     root = loader.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_bidirectional.xml")
-    # root = visualizer.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_normal.xml")
-    # root = visualizer.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_cyclic.xml")
+    # root = loader.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_normal.xml")
+    # root = loader.load("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\test_cyclic.xml")
     graph = loader.create_graph(root)
     print(graph)
+    f = Forest(graph)
+    print(f)
 
 

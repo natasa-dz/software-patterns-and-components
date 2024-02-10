@@ -1,4 +1,6 @@
-from typing import Dict, Any
+import copy
+import json
+from typing import Dict, Any, List, Set
 
 
 class Vertex:
@@ -6,7 +8,7 @@ class Vertex:
 
     def __init__(self, id=None):
         self._attributes = {}
-        self._id = id or self._generate_unique_id()
+        self._id = id
         self._edges = []
 
     @property
@@ -29,6 +31,10 @@ class Vertex:
     def edges(self):
         return self._edges
 
+    @edges.setter
+    def edges(self, edges):
+        self._edges = edges
+
     def degree(self):
         return len(self._edges)
 
@@ -47,7 +53,6 @@ class Vertex:
             if e == edge:
                 return edge
         return None
-
 
     def get_adjacent_vertices(self):
         return [edge.get_end() for edge in self._edges]
@@ -71,13 +76,10 @@ class Vertex:
         current_id = Vertex._id_counter
         Vertex._id_counter += 1
         return current_id
+
     @id.setter
     def id(self, id):
         self._id = id
-
-    @property
-    def edges(self):
-        return self._edges
 
     def degree(self):
         return len(self._edges)
@@ -93,14 +95,15 @@ class Vertex:
             return False
         return True
 
+    def __hash__(self):
+        return hash(self.id)
 
 
 class Edge:
     def __init__(self, start: int, end: int, label=None):
         self.start = start
         self.end = end
-        self.label=label
-
+        self.label = label
 
     def get_start(self) -> int:
         return self.start
@@ -110,9 +113,10 @@ class Edge:
 
     def equals(self, other_edge) -> bool:
         return (
-            self.start == other_edge.get_start()
-            and self.end == other_edge.get_end()
+                self.start == other_edge.get_start()
+                and self.end == other_edge.get_end()
         )
+
 
 class Graph(object):
     def __init__(self):
@@ -121,6 +125,7 @@ class Graph(object):
 
     def add_vertex(self, vertex: 'Vertex'):
         self.vertices[vertex.id] = vertex
+
     def get_vertex(self, key):
         return self.vertices.get(key)
 
@@ -149,8 +154,6 @@ class Graph(object):
         # Create a bidirectional edge
         self.add_edge(vertex2.id, vertex1.id)
 
-
-
     def isBiDirectional(self, vertex1: Vertex, vertex2: Vertex):
         edge1 = Edge(vertex1.get_id(), vertex2.get_id())
         edge2 = Edge(vertex2.get_id(), vertex1.get_id())
@@ -173,11 +176,168 @@ class Graph(object):
         for edge in self.edges:
             print(f"Edge: {edge.start} -> {edge.end}")
 
-
-
     def handle_duplicate(self, duplicate: Vertex):
         if duplicate in self.edges.keys():
             pass
+
+
+class Node(object):
+    def __init__(self, vertex: Vertex, recursive=False):
+        self.attributes = vertex.attributes
+        self.id = vertex.id
+        self.children = []
+        self.recursive = recursive
+
+    def add_child(self, child_node):
+        self.children.append(child_node)
+
+
+# Custom JSON encoder for TreeNode objects
+class NodeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Node):
+            return {'id': obj.id, 'children': obj.children, 'recursive': obj.recursive, 'attributes': obj.attributes}
+        return super().default(obj)
+
+
+class Tree:
+    list_of_vertices: List[Vertex]
+    root: Node
+    containing_node_ids: Set[int]
+
+    def __init__(self, vertices_to_manage):
+        self.list_of_vertices = vertices_to_manage
+        self.containing_node_ids = set()
+        self.create_from_graph()
+
+    def create_from_graph(self):
+        self.root = Node(self.list_of_vertices[0])
+
+        current_vertex = self.list_of_vertices[0]
+        self.remove_vertex_by_id(current_vertex.id)
+
+        self.create_subtree(current_vertex.edges, self.root)
+
+    def create_subtree(self, list_of_edges, parent_node, counter = 0):
+        for edge in list_of_edges:
+            if isinstance(edge.end, Vertex):
+                if edge.end.id not in self.containing_node_ids:  # ako jeste onda je vec ubacena u stablo i onda stavljamo recursive=True
+
+                    end_vertex = self.find_vertex_by_id(edge.get_end().id)
+                    # if end_vertex is None:  #this if is added for logic when having recursion
+                    #     child = Node(Vertex(edge.start), True)
+                    # else:
+
+                    child = Node(end_vertex)
+                    self.remove_vertex_by_id(child.id)
+
+                    parent_node.add_child(child)
+
+                    # if len(end_vertex.edges) != 0 and not child.recursive:
+                    if len(end_vertex.edges) != 0:
+                        counter += 1
+                        self.create_subtree(end_vertex.edges, child, counter)
+                else:
+                    child = Node(Vertex(edge.get_end()), True)
+                    parent_node.add_child(child)
+            else:
+                if edge.end not in self.containing_node_ids:    #ako jeste onda je vec ubacena u stablo i onda stavljamo recursive=True
+
+                    end_vertex = self.find_vertex_by_id(edge.get_end())
+                    # if end_vertex is None:  #this if is added for logic when having recursion
+                    #     child = Node(Vertex(edge.start), True)
+                    # else:
+
+                    child = Node(end_vertex)
+                    self.remove_vertex_by_id(child.id)
+
+                    parent_node.add_child(child)
+
+                    # if len(end_vertex.edges) != 0 and not child.recursive:
+                    if len(end_vertex.edges) != 0:
+                        self.create_subtree(end_vertex.edges, child)
+                else:
+                    child = Node(Vertex(edge.get_end()), True)
+                    parent_node.add_child(child)
+
+    def find_vertex_by_id(self, lookup_id) -> Vertex:
+        if isinstance(lookup_id, Vertex):
+            for vertex in self.list_of_vertices:
+                if vertex.id == lookup_id.id:
+                    return vertex
+        for vertex in self.list_of_vertices:
+            if vertex.id == lookup_id:
+                return vertex
+
+    def remove_vertex_by_id(self, lookup_id):
+        vertex_to_remove = self.find_vertex_by_id(lookup_id)
+        self.list_of_vertices.remove(vertex_to_remove)
+        self.containing_node_ids.add(vertex_to_remove.id)
+
+    def add_node(self, node):
+        if not self.root:
+            self.root = node
+        else:
+            self.root.add_child(node)
+
+    def serialize_tree(self, root):
+        return json.dumps(root, cls=NodeEncoder, indent=2)
+
+
+class Forest:
+    graph: Graph
+    list_of_graph_vertices: List[Vertex]
+    trees: List[Tree]
+
+    def __init__(self, graph):
+        self.trees = []
+        self.graph = graph
+        self.list_of_graph_vertices = self.turn_graph_to_list()
+        self.create_forest()
+
+    def turn_graph_to_list(self):
+        list_to_return = []
+        sorted_graph_vertices = {k: self.graph.vertices[k] for k in sorted(self.graph.vertices.keys())}
+        for vertex in sorted_graph_vertices.values():
+            to_add = copy.deepcopy(vertex)
+            list_to_return.append(to_add)
+        return list_to_return
+
+    def create_forest(self):
+        while len(self.list_of_graph_vertices) != 0:
+            t = Tree(self.list_of_graph_vertices)
+            self.add_tree(t)
+
+    def add_tree(self, tree):
+        self.trees.append(tree)
+
+    def to_dict(self):
+        dictionary = []
+        for i in range(len(self.trees)):
+            dictionary.append(self.trees[i].serialize_tree(self.trees[i].root))
+
+        return dictionary
+
+# # Example usage:
+#
+# # Create nodes with custom attributes
+# node1 = Node({"name": "Node 1", "value": 10})
+# node2 = Node({"name": "Node 2", "value": 20})
+# node3 = Node({"name": "Node 3", "value": 30})
+#
+# # Create a tree and add nodes
+# tree1 = Tree()
+# tree1.add_node(node1)
+# tree1.add_node(node2)
+#
+# # Create another tree and add nodes
+# tree2 = Tree()
+# tree2.add_node(node3)
+#
+# # Create a forest and add trees
+# forest = Forest()
+# forest.add_tree(tree1)
+# forest.add_tree(tree2)
 
 
 # # Example usage:

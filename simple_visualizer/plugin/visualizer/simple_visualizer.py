@@ -36,6 +36,16 @@ class SimpleVisualizer(VisualizingService, ABC):
 
             edges.append(edge_data)
 
+        if len(edges) == 0: #will happen only if it is xml
+            for vertex_id, vertex in graph.vertices.items():
+                for edgeOfVertex in vertex.edges:
+                    edge_data = {
+                        "source": edgeOfVertex.start,
+                        "target": edgeOfVertex.end,
+                        "label": edgeOfVertex.label if edgeOfVertex.label else "Edge"  # Example label, you can customize this
+                    }
+                    edges.append(edge_data)
+
         # Assemble the visualization data
         visualization_data = {
             "nodes": list(nodes.values()),

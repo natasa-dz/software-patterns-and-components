@@ -2,6 +2,7 @@ import os
 from datetime import time
 
 import pkg_resources
+from core.models import Forest
 from django.apps import apps
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -11,7 +12,7 @@ from plugin.loader.rdf_loader import RdfParser
 from core.models import Graph
 
 
-# from plugin.xml_loader.loader import XmlLoader
+from plugin.xml_loader.loader import XMLLoader
 
 def index(request):
     title = apps.get_app_config('core').verbose_name
@@ -63,12 +64,11 @@ def get_graph(loader, file_name):
             current_graph = graph
             # print("Number of edges: ", len(graph.edges))
             return graph
-
-        # TODO: dodaj kada je xmlLoader
-        # TODO: Dodaj da se settuje i ovde current_graph!!!!
-        # else:
-        #     parser = XmlLoader()
-
+        else:
+            parser = XMLLoader()
+            root = parser.load(file_name)
+            graph = parser.create_graph(root)
+            return graph
     return None
 
 
@@ -84,29 +84,34 @@ def simple_visualization_data_processing(request):
         file_name = request.POST.get('file')
         file_path = "..//data/" + file_name
 
+
         if current_graph is None:
             graph = get_graph(loader, file_path)
-
+            forest = Forest(graph)
         else:
             graph = current_graph
+            forest = Forest(graph)
 
         # Render the visualization
         if visualizer and graph:
             # Assuming 'visualizer.visualize' returns the visualization data
             visualization_data = visualizer.visualize(graph, request)
             print("Visualization data rendered! ")
-            return JsonResponse({'visualization_data': visualization_data})
+            return JsonResponse({'visualization_data': visualization_data,
+                                 'forest': forest.to_dict()})
 
     # Handle invalid requests or errors
     return JsonResponse({'error': 'Invalid request'})
 
+# def parse_tree(request):
+#     return render(request, 'tree.html')
 
 def are_parser_and_file_type_matching(loader, file):
     if loader and file:
         if loader.name() == "RdfGraphLoading" and file.endswith('.nt'):
             print("Returned true")
             return True
-        elif file.endswith('.xml') and loader.name == "":
+        elif file.endswith('.xml') and loader.name() == "XML Loader":
             return True
     return False
 
