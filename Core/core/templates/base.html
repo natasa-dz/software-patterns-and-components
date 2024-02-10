@@ -42,8 +42,9 @@
             </div>
             <div class="graphs">
                 <div class="left">
-                        <div id="jstree">
-                        </div>
+                    <div id="bird-container" style="width: 300px; height: 200px; border: 1px solid #419698;"></div>
+                    <div id="jstree">
+                    </div>
                 </div>
                 <div id="right">
                     {% block graphView %}
@@ -82,9 +83,8 @@
         console.log("Loader: ", loader);
         console.log("File: ", file);
 
-
         $.ajax({
-            url: "{% url 'simple_visualization_data_processing' %}",
+            url: visualizer === "Complex Visualizer" ? "{% url 'complex_visualization_data_processing' %}" : "{% url 'simple_visualization_data_processing' %}",
             method: "POST",
             data: {
                 visualizer: visualizer,  // Use the correct ID for visualizer
@@ -97,14 +97,62 @@
                 if (response.forest){
                     renderTree(response.visualization_data, response.forest)
                 }
-                renderVisualization(response.visualization_data);
+                renderVisualization(response.visualization_data, visualizer);
+                init();
             },
             error: function (xhr, status, error) {
                 // Handle error
                 console.error(error);
             }
         });
+
     });
+
+
+function init() {
+    let main = d3.select("#graph-container").node();
+
+    let observer = new MutationObserver(observer_callback);
+
+    observer.observe(main, {
+        subtree: true,
+        attributes: true,
+        childList: true,
+        characterData: true
+    });
+}
+function observer_callback() {
+    // Copy the HTML content of the graph-container to the bird-container
+    let main = d3.select("#graph-container").html();
+    d3.select("#bird-container").html(main);
+
+    // Get the dimensions of the main graph
+    let mainGraph = d3.select("#graph-container").select("g").node();
+    let mainWidth = mainGraph.getBBox().width;
+    let mainHeight = mainGraph.getBBox().height;
+
+    let mainGraphBounds = mainGraph.getBoundingClientRect();
+
+    let birdWidth = 300;
+    let birdHeight = 200;
+
+    let scaleWidth = birdWidth / mainWidth;
+    let scaleHeight = birdHeight / mainHeight;
+    let scale1 = Math.min(scaleWidth, scaleHeight);
+
+    let scaleX = birdWidth / mainGraphBounds.width;
+    let scaleY = birdHeight / mainGraphBounds.height;
+    let scale = Math.min(scaleX, scaleY);
+
+
+    // Get the bounding box of the main graph
+    let mainX = mainGraph.getBBox().x;
+    let mainY = mainGraph.getBBox().y;
+
+    // Apply transformation to the bird-container to zoom and pan
+    d3.select("#bird-container g")
+        .attr("transform", "translate(" + [-mainX * scale1, -mainY * scale1] + ") scale(" + scale1 + ")");
+}
 
     function renderTree(visualizationData, forest){
     console.log("starting rendre tree function...")
@@ -248,7 +296,7 @@
     }
 
 
-function renderVisualization(visualizationData) {
+function renderVisualization(visualizationData, visualizer) {
     console.log(visualizationData)
     d3.select("#graph-container").selectAll("*").remove();
     const svg = d3.select("#graph-container")
@@ -271,58 +319,117 @@ function renderVisualization(visualizationData) {
         .style("stroke", "#004445")
         .style("stroke-width", "2px");
 
-    const node = svg.append("g")
-        .selectAll("g")
-        .data(visualizationData.nodes)
-        .enter().append("g")
-        .on("mouseover", function (event, d) {
-            tooltip.transition()
-                .duration(200)
-                .style("opacity", .9);
-            tooltip.html("Hovered node: " + d.id + "<br/>Attribute: " + JSON.stringify(d.attributes))
-                .style("left", (event.pageX) + "px")
-                .style("top", (event.pageY - 28) + "px");
-        })
-        .on("mouseout", function (d) {
-            tooltip.transition()
-                .duration(500)
-                .style("opacity", 0);
-        })
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended))
-        .on("click", function (event, d) { // Show message on node click
-            alert("You clicked on node: " + d.id)
-        });
+    let node;
+    let simulation;
+
+    if(visualizer == "Complex Visualizer"){
+        console.log("COMPLEX")
+        node = svg.append("g")
+            .selectAll("g")
+            .data(visualizationData.nodes)
+            .enter().append("g")
+            .on("mouseover", function (event, d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("Hovered node: " + d.id+ "<br/>Attribute: " +  d.attributes)
+                    .style("left", (event.pageX) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended))
+            .on("click", function (event, d) { // Show message on node click
+                alert("You clicked on node: " + d.id)});
+
+        node.append("rect")
+            .attr("width", 300) // Set the width of the rectangle
+            .attr("height", 100) // Set the height of the rectangle
+            .style("fill", "steelblue") // Change the fill color
+            .style("stroke", "black"); // Change the border color
+
+        node.append("text")
+            .attr("x", 150) // Place the text in the middle of the rectangle horizontally
+            .attr("y", 50)
+            .attr("text-anchor", "middle") // Center text horizontally
+            .style("fill", "white") // Change the text color
+            .html(function(d) {
+                return "ID: " + d.id + "<tspan x='150' dy='1.2em'>" + d.attributes + "</tspan>";
+            }); // Set the text content
+
+            simulation = d3.forceSimulation(visualizationData.nodes)
+                .force("link", d3.forceLink(visualizationData.edges).id(d => d.id).distance(350))
+                .force("charge", d3.forceManyBody())
+                .force("center", d3.forceCenter(400, 300))
+                .on("tick", ticked);
+
+            function ticked() {
+                link
+                    .attr("x1", d => d.source.x + 150)
+                    .attr("y1", d => d.source.y + 50)
+                    .attr("x2", d => d.target.x + 150)
+                    .attr("y2", d => d.target.y + 50);
+
+                node.attr("transform", d => `translate(${d.x},${d.y})`);
+            }
+    } else {
+        console.log("SIMPLE")
+        node = svg.append("g")
+            .selectAll("g")
+            .data(visualizationData.nodes)
+            .enter().append("g")
+            .on("mouseover", function (event, d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("Hovered node: " + d.id+ "<br/>Attribute: " +  JSON.stringify(d.attributes))
+                    .style("left", (event.pageX) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended))
+            .on("click", function (event, d) { // Show message on node click
+                alert("You clicked on node: " + d.id)});
 
 
-    node.append("circle")
-        .attr("r", 8)
-        .style("fill", "#fde9df")
-        .style("stroke", "#ffd6a4");
+        node.append("circle")
+            .attr("r", 8)
+            .style("fill", "#fde9df")
+            .style("stroke", "#ffd6a4");
 
-    node.append("text") // Append text for node ID
+        node.append("text") // Append text for node ID
         .attr("dy", -12) // Position text above the circle
         .attr("text-anchor", "middle") // Center text horizontally
-        .text(function (d) {
-            return "ID: " + d.id;
-        }); // Set text content to "ID: " followed by the node's ID
+        .text(function(d) { return "ID: " + d.id; }); // Set text content to "ID: " followed by the node's ID
 
-    const simulation = d3.forceSimulation(visualizationData.nodes)
-        .force("link", d3.forceLink(visualizationData.edges).id(d => d.id))
-        .force("charge", d3.forceManyBody())
-        .force("center", d3.forceCenter(400, 300))
-        .on("tick", ticked);
+        simulation = d3.forceSimulation(visualizationData.nodes)
+            .force("link", d3.forceLink(visualizationData.edges).id(d => d.id))
+            .force("charge", d3.forceManyBody())
+            .force("center", d3.forceCenter(400, 300))
+            .on("tick", ticked);
 
-    function ticked() {
-        link
-            .attr("x1", d => d.source.x)
-            .attr("y1", d => d.source.y)
-            .attr("x2", d => d.target.x)
-            .attr("y2", d => d.target.y);
+        function ticked() {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
 
-        node.attr("transform", d => `translate(${d.x},${d.y})`);
+            node.attr("transform", d => `translate(${d.x},${d.y})`);
+        }
     }
 
     function dragstarted(event, d) {
@@ -355,49 +462,49 @@ function renderVisualization(visualizationData) {
         .on('zoom', handleZoom);
 
     function initZoom() {
-        d3.select('svg')
+        d3.select('#graph-container svg')
             .call(zoom);
     }
 
     initZoom();
 
     function handleZoom(e) {
-        d3.select('svg g')
+        d3.select('#graph-container svg g')
             .attr('transform', e.transform);
     }
 
     function zoomIn() {
-        d3.select('svg')
+        d3.select('#graph-container svg')
             .transition()
             .call(zoom.scaleBy, 2);
     }
 
     function zoomOut() {
-        d3.select('svg')
+        d3.select('#graph-container svg')
             .transition()
             .call(zoom.scaleBy, 0.5);
     }
 
     function resetZoom() {
-        d3.select('svg')
+        d3.select('#graph-container svg')
             .transition()
             .call(zoom.scaleTo, 1);
     }
 
     function center() {
-        d3.select('svg')
+        d3.select('#graph-container svg')
             .transition()
             .call(zoom.translateTo, 0.5 * width, 0.5 * height);
     }
 
     function panRight() {
-        d3.select('svg')
+        d3.select('#graph-container svg')
             .transition()
             .call(zoom.translateBy, -50, 0);
     }
 
     function panLeft() {
-        d3.select('svg')
+        d3.select('#graph-container svg')
             .transition()
             .call(zoom.translateBy, 50, 0);
     }
@@ -412,8 +519,6 @@ function renderVisualization(visualizationData) {
     document.getElementById('pan-left-button').addEventListener('click', panLeft);
     document.getElementById('pan-right-button').addEventListener('click', panRight);
     // document.getElementById('center-button').addEventListener('click', center);
-
-
 
 }
 

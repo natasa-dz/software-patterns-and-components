@@ -98,7 +98,6 @@ class Vertex:
     def __hash__(self):
         return hash(self.id)
 
-
 class Edge:
     def __init__(self, start: int, end: int, label=None):
         self.start = start

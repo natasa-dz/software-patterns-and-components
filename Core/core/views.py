@@ -20,14 +20,11 @@ def index(request):
 
 
 def base(request):
+
     title = apps.get_app_config('core').verbose_name
     files = apps.get_app_config('core').data
     visualizers = apps.get_app_config('core').visualizers
     loaders = apps.get_app_config('core').loaders
-    # displayed_graph = apps.get_app_config('displayed_graph').displayed_graph
-    # chosen_visualizer = apps.get_app_config('chosen_visualizer').chosen_visualizer
-    # 'current_graph': displayed_graph, 'chosen_visualizer': chosen_visualizer}
-
     return render(request, 'base.html', {'title': title, 'data': files, 'visualizers': visualizers, 'loaders': loaders})
 
 
@@ -69,6 +66,7 @@ def get_graph(loader, file_name):
             return graph
     return None
 
+
 def simple_visualization_data_processing(request):
     if request.method == 'POST':
 
@@ -80,7 +78,6 @@ def simple_visualization_data_processing(request):
 
         file_name = request.POST.get('file')
         file_path = "..//data/" + file_name
-
         graph = get_graph(loader, file_path)
 
         if file_path.endswith(".nt"):
@@ -111,6 +108,37 @@ def are_parser_and_file_type_matching(loader, file):
         elif file.endswith('.xml') and loader.name() == "XML Loader":
             return True
     return False
+
+
+def complex_visualization_data_processing(request):
+    if request.method == 'POST':
+        visualizer_name = request.POST.get('visualizer')
+        visualizer = get_visualizer(visualizer_name)
+        loader_name = request.POST.get('loader')
+        loader = get_loader(loader_name)
+
+        file_name = request.POST.get('file')
+        file_path = "..//data/" + file_name
+
+        graph = get_graph(loader, file_path)
+
+        if file_path.endswith(".nt"):
+            if visualizer and graph:
+                # Assuming 'visualizer.visualize' returns the visualization data
+                visualization_data = visualizer.visualize(graph, request)
+                print("Visualization data rendered! ")
+                return JsonResponse({'visualization_data': visualization_data})
+        else:
+            forest = Forest(graph)
+            # Render the visualization
+            if visualizer and graph:
+                # Assuming 'visualizer.visualize' returns the visualization data
+                visualization_data = visualizer.visualize(graph, request)
+                print("Visualization data rendered! ")
+                return JsonResponse({'visualization_data': visualization_data,
+                                     'forest': forest.to_dict()})
+
+    return JsonResponse({'error': 'Invalid request'})
 
 
 def evaluate_query(node, attribute, operator, value):

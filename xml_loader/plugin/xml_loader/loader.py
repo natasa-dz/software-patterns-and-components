@@ -42,8 +42,6 @@ class XMLLoader(LoadingService):
                 id_generator += 1
                 for attr in node.attrib:
                     v.add_attribute(attr, node.attrib[attr])
-                    #todo: ako mi ostane vremena ovde treba znati da kad imam <node attributes>text</node> mn text totalno preskoci
-                    # nije ogromna greska, ako ne stignem totalno cu zanemariti, ali ako stignem mozda probati da prepravim samo to
 
             if node.text.strip() != "" and parent_vertex != None:       #uvek ce biti prazno za pocetak objekta
                 node.text = " ".join(node.text.split())
