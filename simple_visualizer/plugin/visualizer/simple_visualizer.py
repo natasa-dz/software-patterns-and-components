@@ -18,9 +18,10 @@ class SimpleVisualizer(VisualizingService, ABC):
         edges = []
 
         for vertex_id, vertex in graph.vertices.items():
-            # Define attributes for the node
+            print("Vertex Visualizer: ", vertex)
             node_data = {
                 "id": vertex_id,
+                "attributes": vertex.attributes
                 # "label": f"Node {vertex_id}"
             }
             nodes[vertex_id] = node_data
@@ -29,8 +30,8 @@ class SimpleVisualizer(VisualizingService, ABC):
         for edge in graph.edges:
             # Define attributes for the edge
             edge_data = {
-                "source": edge.start.id,
-                "target": edge.end.id,
+                "source": edge.start,
+                "target": edge.end,
             }
 
             edges.append(edge_data)
