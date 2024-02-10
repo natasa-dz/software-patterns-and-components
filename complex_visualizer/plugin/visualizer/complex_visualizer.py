@@ -8,6 +8,7 @@ class ComplexVisualizer(VisualizingService):
     def id(self):
         return "Complex graph"
 
+    @property
     def name(self):
         return "Complex Visualizer"
 
@@ -17,21 +18,21 @@ class ComplexVisualizer(VisualizingService):
     def visualize(self, graph, request):
         vertices = {}
         edges = []
-        for vertex in graph.vertices:
-            attributes = []
+        for vertex_id, vertex in graph.vertices.items():
+            attributes = "\n"
             for attribute in vertex.attributes.keys():
-                attributes.append(attribute + ": " + str(vertex.attributes[attribute]))
+                attributes += attribute + ": " + str(vertex.attributes[attribute]) + "\n"
             vertices[vertex.id] = {
-                "id": "Vertex " + str(vertex.id),
+                "id": vertex_id,
                 "attributes": attributes
             }
-            for edge in vertex.edges():
-                current_edge = {
-                    "start": edge.start.id,
-                    "end": edge.end.id,
-                    "label": edge.label if edge.label else "Edge"
-                }
-                edges.append(current_edge)
+
+        for edge in graph.edges:
+            current_edge = {
+                "source": edge.start,
+                "target": edge.end
+            }
+            edges.append(current_edge)
 
         visualization_data = {
             "nodes": list(vertices.values()),

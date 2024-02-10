@@ -26,7 +26,8 @@ def base(request):
 def get_visualizer(visualizer_name):
     visualizers = apps.get_app_config('core').visualizers
     for v in visualizers:
-        # print("V name: ", v.name)
+        print("Vis name: ", v.name)
+        print("Vis_name: ", visualizer_name)
         if v.name == visualizer_name:
             return v
     return None
@@ -114,15 +115,16 @@ def complex_visualization_data_processing(request):
 
         graph = get_graph(loader, file_path)
         print("-------------------- COMPLEX VISUALIZATION ------------------------")
-        print("Graph edges from Graph itself: ")
-        for e in graph.edges:
-            print(e)
-        print("-------------------------------------------------------------")
-        for vertex_id, vertex in graph.vertices.items():
-            print(f"Vertex ID: {vertex_id}")
-        print("Edges:")
-        for edge in graph.edges:
-            print(f"Start: {edge.start.id}, End: {edge.end.id}, Label: {edge.label}")
+        # print("Graph edges from Graph itself: ")
+        # for e in graph.edges:
+        #     print(e)
+        # print("-------------------------------------------------------------")
+        # for vertex_id, vertex in graph.vertices.items():
+        #     print(f"Vertex ID: {vertex_id}")
+        # print("Edges:")
+        # for edge in graph.edges:
+        #     print(f"Start: {edge.start}, End: {edge.end}, Label: {edge.label}")
+        print(visualizer)
 
         if visualizer and graph:
             visualization_data = visualizer.visualize(graph, request)
