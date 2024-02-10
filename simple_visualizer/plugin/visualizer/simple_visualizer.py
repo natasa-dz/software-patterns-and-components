@@ -13,6 +13,9 @@ class SimpleVisualizer(VisualizingService, ABC):
     def id(self):
         return "Simple graph"
 
+    def url(self):
+        return 'simple_visualization_data_processing'
+
     def visualize(self, graph, request):
         nodes = {}
         edges = []

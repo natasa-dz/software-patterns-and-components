@@ -11,6 +11,9 @@ class ComplexVisualizer(VisualizingService):
     def name(self):
         return "Complex Visualizer"
 
+    def url(self):
+        return 'complex_visualization_data_processing'
+
     def visualize(self, graph, request):
         vertices = {}
         edges = []
@@ -24,8 +27,8 @@ class ComplexVisualizer(VisualizingService):
             }
             for edge in vertex.edges():
                 current_edge = {
-                    "start": edge.get_start(),
-                    "end": edge.get_end(),
+                    "start": edge.start.id,
+                    "end": edge.end.id,
                     "label": edge.label if edge.label else "Edge"
                 }
                 edges.append(current_edge)

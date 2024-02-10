@@ -103,18 +103,28 @@ def are_parser_and_file_type_matching(loader, file):
     return False
 
 
-def complex_visualization(request):
+def complex_visualization_data_processing(request):
     if request.method == 'POST':
-        visualizer = get_visualizer("Complex Visualizer")
+        visualizer_name = request.POST.get('visualizer')
+        visualizer = get_visualizer(visualizer_name)
         loader_name = request.POST.get('loader')
         loader = get_loader(loader_name)
-        file_name = request.POST.get('file')
-        print("-------------------- COMPLEX VISUALIZATION ------------------------")
-        print('VISUALIZER: ', visualizer)
-        print('LOADER: ', loader)
-        print('FILE NAME: ', file_name)
 
-        graph = get_graph(loader, file_name)
+        file_name = request.POST.get('file')
+        file_path = "..//data/" + file_name
+
+        graph = get_graph(loader, file_path)
+        print("-------------------- COMPLEX VISUALIZATION ------------------------")
+        print("Graph edges from Graph itself: ")
+        for e in graph.edges:
+            print(e)
+        print("-------------------------------------------------------------")
+        for vertex_id, vertex in graph.vertices.items():
+            print(f"Vertex ID: {vertex_id}")
+        print("Edges:")
+        for edge in graph.edges:
+            print(f"Start: {edge.start.id}, End: {edge.end.id}, Label: {edge.label}")
+
         if visualizer and graph:
             visualization_data = visualizer.visualize(graph, request)
             print("Visualization data rendered! ")

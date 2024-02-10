@@ -13,7 +13,7 @@ class CoreConfig(AppConfig):
 
     #kad pritisnem isparsiram neki fajl, onda ovde mogu da upisem instancu grafa koji je trenutno kreiran
     def ready(self):
-        self.data = load_files_from_directory("..\\data")
+        self.data = load_files_from_directory("../data")
         self.visualizers = load_visualizers()
         self.loaders = load_loaders()
 
