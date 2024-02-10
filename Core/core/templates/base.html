@@ -94,8 +94,10 @@
 
             },
             success: function (response) {
+                if (response.forest){
+                    renderTree(response.visualization_data, response.forest)
+                }
                 renderVisualization(response.visualization_data);
-                // renderTree(response.visualization_data, response.forest)
             },
             error: function (xhr, status, error) {
                 // Handle error
@@ -104,8 +106,8 @@
         });
     });
 
-    function renderTree(visualization_data, forest){
-
+    function renderTree(visualizationData, forest){
+    console.log("starting rendre tree function...")
     console.log("Visualization data:", visualizationData);
     console.log("Forest: ", forest)
 
@@ -140,54 +142,54 @@
     });
     }
 
-    function copyNode(nodeId, jstreeInstance) {
-        // Get the original node
-        var originalNode = jstreeInstance.get_node(nodeId);
-
-        // Clone the original node data
-        var clonedData = { ...originalNode.data }; // You may need to adjust this based on your data structure
-
-        // Create a new node with the cloned data
-        var newNode = jstreeInstance.create_node(originalNode.parent, clonedData, 'last', function () {
-            // Callback function after the new node is created
-            console.log('Node copied successfully');
-        });
-
-        // If you want to copy children recursively, you can call copyNode recursively for each child node
-        originalNode.children.forEach(function(childId) {
-            copyNode(childId);
-        });
-        return newNode;
-    }
-    function traverseAllParsedTrees(searchedNodeId){
-        var subtree = null
-        for (let tree of parsedForest){
-            subtree = findSubtreeForInsert(tree, searchedNodeId)
-            if (subtree != null){
-                return subtree
-            }
-        }
-        return subtree
-    }
-    function findSubtreeForInsert(node, searchedNodeId) {
-        var retVal = null;
-        // Base case: if the node is null or undefined, return
-        if (!node) {
-            return;
-        }
-
-        if (node.id === searchedNodeId){
-            return node;
-        }
-
-        // Recursively traverse children nodes
-        if (node.children && node.children.length > 0) {
-            node.children.forEach(function(child) {
-                retVal = findSubtreeForInsert(child);
-            });
-        }
-        return retVal
-    }
+    // function copyNode(nodeId, jstreeInstance) {
+    //     // Get the original node
+    //     var originalNode = jstreeInstance.get_node(nodeId);
+    //
+    //     // Clone the original node data
+    //     var clonedData = { ...originalNode.data }; // You may need to adjust this based on your data structure
+    //
+    //     // Create a new node with the cloned data
+    //     var newNode = jstreeInstance.create_node(originalNode.parent, clonedData, 'last', function () {
+    //         // Callback function after the new node is created
+    //         console.log('Node copied successfully');
+    //     });
+    //
+    //     // If you want to copy children recursively, you can call copyNode recursively for each child node
+    //     originalNode.children.forEach(function(childId) {
+    //         copyNode(childId);
+    //     });
+    //     return newNode;
+    // }
+    // function traverseAllParsedTrees(searchedNodeId){
+    //     var subtree = null
+    //     for (let tree of parsedForest){
+    //         subtree = findSubtreeForInsert(tree, searchedNodeId)
+    //         if (subtree != null){
+    //             return subtree
+    //         }
+    //     }
+    //     return subtree
+    // }
+    // function findSubtreeForInsert(node, searchedNodeId) {
+    //     var retVal = null;
+    //     // Base case: if the node is null or undefined, return
+    //     if (!node) {
+    //         return;
+    //     }
+    //
+    //     if (node.id === searchedNodeId){
+    //         return node;
+    //     }
+    //
+    //     // Recursively traverse children nodes
+    //     if (node.children && node.children.length > 0) {
+    //         node.children.forEach(function(child) {
+    //             retVal = findSubtreeForInsert(child);
+    //         });
+    //     }
+    //     return retVal
+    // }
 
 
 
@@ -247,7 +249,6 @@
 
 
 function renderVisualization(visualizationData) {
-    //------------------------------------------------------odavde krece tvoje
     console.log(visualizationData)
     d3.select("#graph-container").selectAll("*").remove();
     const svg = d3.select("#graph-container")
@@ -345,6 +346,8 @@ function renderVisualization(visualizationData) {
     const resetButton = d3.select("#reset-button");
     resetButton.on("click", function () {
         svg.selectAll("*").remove();
+        var myTree = $('#jstree').jstree();
+        myTree.destroy();
     });
 
     let zoom = d3.zoom()

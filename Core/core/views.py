@@ -83,13 +83,21 @@ def simple_visualization_data_processing(request):
 
         graph = get_graph(loader, file_path)
 
-
-        # Render the visualization
-        if visualizer and graph:
-            # Assuming 'visualizer.visualize' returns the visualization data
-            visualization_data = visualizer.visualize(graph, request)
-            print("Visualization data rendered! ")
-            return JsonResponse({'visualization_data': visualization_data})
+        if file_path.endswith(".nt"):
+            if visualizer and graph:
+                # Assuming 'visualizer.visualize' returns the visualization data
+                visualization_data = visualizer.visualize(graph, request)
+                print("Visualization data rendered! ")
+                return JsonResponse({'visualization_data': visualization_data})
+        else:
+            forest = Forest(graph)
+            # Render the visualization
+            if visualizer and graph:
+                # Assuming 'visualizer.visualize' returns the visualization data
+                visualization_data = visualizer.visualize(graph, request)
+                print("Visualization data rendered! ")
+                return JsonResponse({'visualization_data': visualization_data,
+                                     'forest': forest.to_dict()})
 
     # Handle invalid requests or errors
     return JsonResponse({'error': 'Invalid request'})
