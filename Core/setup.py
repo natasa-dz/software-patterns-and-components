@@ -8,6 +8,7 @@ setup(
     namespace_packages=['core'],
     packages=find_packages(),
     install_requires=['Django>=3.1'],   #moramo imati django da bi ovo mogli instalirati
+    provides=['services'],
     zip_safe=False,
     package_data={'core': ['static/.css', 'static/.js', 'static/.html', 'templates/.html']} #reci mu da ukljuci iz ovih foldera ovo
 )

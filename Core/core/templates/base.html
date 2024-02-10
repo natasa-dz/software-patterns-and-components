@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        {% load static %}
-        <link rel='stylesheet' href="{% static 'style.css' %}"/>
-        <title> {{title}} </title>
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel='stylesheet' href="../static/style.css"/>
+<!--    <link rel="stylesheet" href="jstree-master/dist/themes/default/style.min.css" />-->
+<!--    <script src="jstree-master/dist/jstree.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+    <title> {{title}} </title>
+</head>
+<body>
         <div class="page">
             <div class="header">
                 <label class="label" for="data-type-selector">Select type of data to parse: </label>
@@ -35,9 +42,9 @@
             </div>
             <div class="graphs">
                 <div class="left">
-                    {% block treeView %}
+                    <div id="jstree">
+                    </div>
                     <div id="bird-container" style="width: 300px; height: 200px; border: 1px solid #419698;"></div>
-                    {% endblock %}
                 </div>
                 <div id="right">
                     {% block graphView %}
@@ -49,14 +56,23 @@
                     <button class="button" id="pan-left-button">Pan left</button>
                     <button class="button" id="pan-right-button">Pan right</button>
 
+                        <!-- Input field for search query -->
+                    <label class="label_query" for="visualizator-type-selector">Input query: </label>
+
+                    <input type="text" id="Query" placeholder="Query: <attribute> <operator> <value>, operators supported: [>, <, ==, >=, <=, !=]">
+
+                    <!-- Button to apply search and filter -->
+                    <button onclick="applySearchAndFilter()">Apply</button>
+
+
                 </div>
             </div>
         </div>
-<!-- Include jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://d3js.org/d3.v7.min.js"></script>
+
+
 <script>
 
+    parsedForest = []
     $("#start-parsing").on("click", function () {
         var visualizer= $("#visualizator-type-selector").val();
         var loader = $("#data-type-selector").val();
@@ -78,7 +94,9 @@
 
             },
             success: function (response) {
-                // Handle successful response, e.g., render the visualization
+                if (response.forest){
+                    renderTree(response.visualization_data, response.forest)
+                }
                 renderVisualization(response.visualization_data, visualizer);
                 init();
             },
@@ -87,7 +105,6 @@
                 console.error(error);
             }
         });
-
 
     });
 
@@ -104,7 +121,6 @@ function init() {
         characterData: true
     });
 }
-
 function observer_callback() {
     // Copy the HTML content of the graph-container to the bird-container
     let main = d3.select("#graph-container").html();
@@ -136,43 +152,148 @@ function observer_callback() {
     // Apply transformation to the bird-container to zoom and pan
     d3.select("#bird-container g")
         .attr("transform", "translate(" + [-mainX * scale1, -mainY * scale1] + ") scale(" + scale1 + ")");
-
 }
 
-function rect_bird_view(x, y, scale) {
-    console.log('Bird-eye view parameters:', x, y, scale); // Log parameters for debugging
+    function renderTree(visualizationData, forest){
+    console.log("starting rendre tree function...")
+    console.log("Visualization data:", visualizationData);
+    console.log("Forest: ", forest)
 
-    let birdWidth = 300; // Width of the bird-eye view container
-    let birdHeight = 200; // Height of the bird-eye view container
+         var JSONtrees = [];
+    for (var tree of forest) {
+        console.log("AFTER JSON PARSE:", JSON.parse(tree));
+        JSONtrees.push(JSON.parse(tree)); // Add parsed tree to the trees list
+    }
+    console.log("JSONTREES", JSONtrees)
+    parsedForest = JSONtrees.map(transformData)
+    console.log("parsirana suma:", parsedForest)
 
-    let mainGraph = d3.select("#graph-container").select("g").node();
-    let mainX = mainGraph.getBBox().x;
-    let mainY = mainGraph.getBBox().y;
+    $(document).ready(function () {
+        // jsTree initialization code here
 
-    console.log('Main graph bounds:', mainX, mainY); // Log main graph bounds for debugging
 
-    let birdScale = 1 / scale; // Invert the scale to fit the bird-eye view
+        // Initialize jstree with the created data
+        $('#jstree').jstree({
+            'core': {
+                'check_callback': function (operation, node, node_parent, node_position, more) {
+                    // Check if the operation is copy_node
+                    if (operation === 'copy_node') {
+                        console.log("uslo u configu gde treba====")
+                        return true; // Allow copy_node
+                    }
+                    // For other operations, return true to allow by default
+                    return true;
+                },
+                'data': JSONtrees.map(transformData)
+            }
+        });
+    });
+    }
 
-    console.log('Bird-eye view scale:', birdScale); // Log bird-eye view scale for debugging
+    // function copyNode(nodeId, jstreeInstance) {
+    //     // Get the original node
+    //     var originalNode = jstreeInstance.get_node(nodeId);
+    //
+    //     // Clone the original node data
+    //     var clonedData = { ...originalNode.data }; // You may need to adjust this based on your data structure
+    //
+    //     // Create a new node with the cloned data
+    //     var newNode = jstreeInstance.create_node(originalNode.parent, clonedData, 'last', function () {
+    //         // Callback function after the new node is created
+    //         console.log('Node copied successfully');
+    //     });
+    //
+    //     // If you want to copy children recursively, you can call copyNode recursively for each child node
+    //     originalNode.children.forEach(function(childId) {
+    //         copyNode(childId);
+    //     });
+    //     return newNode;
+    // }
+    // function traverseAllParsedTrees(searchedNodeId){
+    //     var subtree = null
+    //     for (let tree of parsedForest){
+    //         subtree = findSubtreeForInsert(tree, searchedNodeId)
+    //         if (subtree != null){
+    //             return subtree
+    //         }
+    //     }
+    //     return subtree
+    // }
+    // function findSubtreeForInsert(node, searchedNodeId) {
+    //     var retVal = null;
+    //     // Base case: if the node is null or undefined, return
+    //     if (!node) {
+    //         return;
+    //     }
+    //
+    //     if (node.id === searchedNodeId){
+    //         return node;
+    //     }
+    //
+    //     // Recursively traverse children nodes
+    //     if (node.children && node.children.length > 0) {
+    //         node.children.forEach(function(child) {
+    //             retVal = findSubtreeForInsert(child);
+    //         });
+    //     }
+    //     return retVal
+    // }
 
-    let rectX = (-mainX + x) * birdScale; // Calculate X-coordinate of the rectangle in the bird-eye view
-    let rectY = (-mainY + y) * birdScale; // Calculate Y-coordinate of the rectangle in the bird-eye view
-    let rectWidth = birdWidth * birdScale; // Calculate width of the rectangle in the bird-eye view
-    let rectHeight = birdHeight * birdScale; // Calculate height of the rectangle in the bird-eye view
 
-    // console.log('Rectangle coordinates and dimensions:', rectX, rectY, rectWidth, rectHeight); // Log rectangle details for debugging
 
-    d3.select("#bird-container svg").selectAll("rect").remove(); // Remove existing rectangles
-    let rect = d3.select("#bird-container svg")
-        .append("rect")
-        .attr("x", rectX)
-        .attr("y", rectY)
-        .attr("width", rectWidth)
-        .attr("height", rectHeight)
-        .style("fill", "none")
-        .style("stroke", "red")
-        .style("stroke-width", 1.5);
-}
+    $('#jstree').on('open_node.jstree', function (e, data) {
+        // Get the opened node
+        var openedNode = data.node;
+        var jstreeInstance = $('#jstree').jstree(true);
+
+        for (let id of openedNode.children) {
+            let child = jstreeInstance.get_node(id);
+            console.log("Checking child:", child);
+            for (let id2 of child.children){
+                let grandchild = jstreeInstance.get_node(id2);
+                console.log("Checking grandchild:", grandchild)
+                if (grandchild.original.recursive === true){
+                    console.log("========NALETEO NA REKURZIVNOG UNUKA!!!!=====")
+                    console.log("POCINJE MENJANJE SA POSTOJECIM NODOM")
+                    let recursion_existing_id = grandchild.original.recursive_parent_id
+                    let recursion_existing_node = jstreeInstance.get_node(recursion_existing_id)
+                    console.log("ONAJ KOJI TREBA DA IZMENI REKURZIVNOG UNUKA:", recursion_existing_node)
+
+                    console.log(jstreeInstance.copy_node(openedNode, -1))
+
+                }
+            }
+        }
+
+        // // Perform other actions when the node is opened
+        // console.log("Node opened:", openedNode);
+        // console.log("Node opened children:", openedNode.children);
+
+    });
+
+    // Recursively transform JSON data into jstree-compatible format(nodes with its children!)
+    function transformData(node) {
+        console.log("USLO U DBR FJU")
+        var jstreeNode = {
+            id: node.id,
+            text: node.id,
+            recursive: node.recursive,
+            children: []
+        };
+
+            if (jstreeNode.recursive){
+                jstreeNode.recursive_parent_id = jstreeNode.id
+                jstreeNode.id = "recursive_" + jstreeNode.id
+            }
+
+        if (node.children && node.children.length > 0) {
+          node.children.forEach(function(child) {
+            jstreeNode.children.push(transformData(child));
+          });
+        }
+
+        return jstreeNode;
+    }
 
 
 function renderVisualization(visualizationData, visualizer) {
@@ -311,22 +432,6 @@ function renderVisualization(visualizationData, visualizer) {
         }
     }
 
-<!--    simulation = d3.forceSimulation(visualizationData.nodes)-->
-<!--        .force("link", d3.forceLink(visualizationData.edges).id(d => d.id).distance(250))-->
-<!--        .force("charge", d3.forceManyBody())-->
-<!--        .force("center", d3.forceCenter(400, 300))-->
-<!--        .on("tick", ticked);-->
-
-<!--    function ticked() {-->
-<!--        link-->
-<!--            .attr("x1", d => d.source.x + 150)-->
-<!--            .attr("y1", d => d.source.y + 50)-->
-<!--            .attr("x2", d => d.target.x + 150)-->
-<!--            .attr("y2", d => d.target.y + 50);-->
-
-<!--        node.attr("transform", d => `translate(${d.x},${d.y})`);-->
-<!--    }-->
-
     function dragstarted(event, d) {
         if (!event.active) simulation.alphaTarget(0.3).restart();
         d.fx = d.x;
@@ -348,31 +453,24 @@ function renderVisualization(visualizationData, visualizer) {
     const resetButton = d3.select("#reset-button");
     resetButton.on("click", function () {
         svg.selectAll("*").remove();
+        var myTree = $('#jstree').jstree();
+        myTree.destroy();
     });
 
-        let zoom = d3.zoom()
-	.scaleExtent([0.25, 10])
-	.on('zoom', handleZoom);
+    let zoom = d3.zoom()
+        .scaleExtent([0.25, 10])
+        .on('zoom', handleZoom);
 
     function initZoom() {
         d3.select('#graph-container svg')
             .call(zoom);
     }
+
     initZoom();
 
     function handleZoom(e) {
         d3.select('#graph-container svg g')
             .attr('transform', e.transform);
-
-<!--        // Get the current transformation matrix-->
-<!--        let transform = e.transform;-->
-
-<!--        // Extract the scale and translate values-->
-<!--        let scale = transform.k; // Scale of the zoom-->
-<!--        let x = transform.x; // Translate along the x-axis-->
-<!--        let y = transform.y; // Translate along the y-axis-->
-
-<!--        rect_bird_view(x,y,scale);-->
     }
 
     function zoomIn() {
@@ -421,6 +519,11 @@ function renderVisualization(visualizationData, visualizer) {
     document.getElementById('pan-left-button').addEventListener('click', panLeft);
     document.getElementById('pan-right-button').addEventListener('click', panRight);
     // document.getElementById('center-button').addEventListener('click', center);
+
+}
+
+function applySearchAndFilter() {
+    var filterQuery = document.getElementById('Query').value;
 
 }
 

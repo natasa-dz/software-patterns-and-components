@@ -1,9 +1,10 @@
+import sys
 from abc import ABC
 
 from rdflib import URIRef, RDF, RDFS, BNode, OWL, Graph as RdfGraph
-from Core.core.models import Graph as CoreGraph, Vertex, Edge
+from core.models import Graph as CoreGraph, Vertex, Edge, Forest
 
-from Core.core.services.loading import LoadingService
+from core.services.loading import LoadingService
 
 class RdfParser(LoadingService, ABC):
 
@@ -66,6 +67,8 @@ class RdfParser(LoadingService, ABC):
                 self.process_subject(nested_subject, None, nested_subject, core_graph, parent_label=edge_label)
 
     def create_or_get_vertex(self, identifier, core_graph):
+
+
         if not isinstance(identifier, BNode):
             if (len(core_graph.vertices.items())!=0):
 
@@ -95,13 +98,12 @@ class RdfParser(LoadingService, ABC):
             vertex = core_graph.vertices[edge.start]
             vertex.add_edge(edge)
 
-
 if __name__ == '__main__':
     rdf_parser = RdfParser()
-    rdf_parser.load_from_file("/Users/uros/Software-patterns-and-components/data/acyclicData.nt")
+    rdf_parser.load_from_file("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\acyclicRDF.nt")
     parsed_graph = rdf_parser.create_graph()
     rdf_nodes, rdf_edges = rdf_parser.count_nodes_and_edges(parsed_graph)
-
+    forest=Forest(parsed_graph)
     print("Number of edges: ", rdf_edges)
 
     print("\nVertices with edges:")
