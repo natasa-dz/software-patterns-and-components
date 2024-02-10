@@ -23,4 +23,9 @@ cd simple_visualizer
 python setup.py install
 cd ..
 
+rem Install complex_visualizer
+cd complex_visualizer
+python setup.py install
+cd ..
+
 echo All installations completed.

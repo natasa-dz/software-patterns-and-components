@@ -1,5 +1,0 @@
-@prefix ex: <http://example.org/>.
-
-ex:Person1 ex:knows ex:Person2.
-ex:Person2 ex:knows ex:Person3.
-ex:Person3 ex:knows ex:Person4.
