@@ -121,22 +121,22 @@ def complex_visualization_data_processing(request):
         file_path = "..//data/" + file_name
 
         graph = get_graph(loader, file_path)
-        print("-------------------- COMPLEX VISUALIZATION ------------------------")
-        # print("Graph edges from Graph itself: ")
-        # for e in graph.edges:
-        #     print(e)
-        # print("-------------------------------------------------------------")
-        # for vertex_id, vertex in graph.vertices.items():
-        #     print(f"Vertex ID: {vertex_id}")
-        # print("Edges:")
-        # for edge in graph.edges:
-        #     print(f"Start: {edge.start}, End: {edge.end}, Label: {edge.label}")
-        print(visualizer)
 
-        if visualizer and graph:
-            visualization_data = visualizer.visualize(graph, request)
-            print("Visualization data rendered! ")
-            return JsonResponse({'visualization_data': visualization_data})
+        if file_path.endswith(".nt"):
+            if visualizer and graph:
+                # Assuming 'visualizer.visualize' returns the visualization data
+                visualization_data = visualizer.visualize(graph, request)
+                print("Visualization data rendered! ")
+                return JsonResponse({'visualization_data': visualization_data})
+        else:
+            forest = Forest(graph)
+            # Render the visualization
+            if visualizer and graph:
+                # Assuming 'visualizer.visualize' returns the visualization data
+                visualization_data = visualizer.visualize(graph, request)
+                print("Visualization data rendered! ")
+                return JsonResponse({'visualization_data': visualization_data,
+                                     'forest': forest.to_dict()})
 
     return JsonResponse({'error': 'Invalid request'})
 
