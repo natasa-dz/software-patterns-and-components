@@ -3,25 +3,13 @@
 <head>
     <meta charset="UTF-8">
     {% load static %}
-    <link rel='stylesheet' href="{% static 'style.css' %}"/>
+    <link rel='stylesheet' href="../static/style.css"/>
 <!--    <link rel="stylesheet" href="jstree-master/dist/themes/default/style.min.css" />-->
 <!--    <script src="jstree-master/dist/jstree.min.js"></script>-->
-
-<!--    &lt;!&ndash; Include jQuery library &ndash;&gt;-->
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <!-- Include jstree library -->
-    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>-->
-    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />-->
-    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>-->
-    <!-- Include jsTree CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
-
-<!-- Include jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<!-- Include jsTree JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
 
     <title> {{title}} </title>
 </head>
@@ -204,7 +192,7 @@
                     let recursion_existing_node = jstreeInstance.get_node(recursion_existing_id)
                     console.log("ONAJ KOJI TREBA DA IZMENI REKURZIVNOG UNUKA:", recursion_existing_node)
 
-                    console.log(jstreeInstance.copy_node(recursion_existing_node, openedNode))
+                    console.log(jstreeInstance.copy_node(openedNode, -1))
 
                 }
             }
