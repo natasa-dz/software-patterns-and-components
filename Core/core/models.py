@@ -218,26 +218,47 @@ class Tree:
 
         self.create_subtree(current_vertex.edges, self.root)
 
-    def create_subtree(self, list_of_edges, parent_node):
+    def create_subtree(self, list_of_edges, parent_node, counter = 0):
         for edge in list_of_edges:
-            if edge.end not in self.containing_node_ids:    #ako jeste onda je vec ubacena u stablo i onda stavljamo recursive=True
+            if isinstance(edge.end, Vertex):
+                if edge.end.id not in self.containing_node_ids:  # ako jeste onda je vec ubacena u stablo i onda stavljamo recursive=True
 
-                end_vertex = self.find_vertex_by_id(edge.get_end())
-                # if end_vertex is None:  #this if is added for logic when having recursion
-                #     child = Node(Vertex(edge.start), True)
-                # else:
+                    end_vertex = self.find_vertex_by_id(edge.get_end().id)
+                    # if end_vertex is None:  #this if is added for logic when having recursion
+                    #     child = Node(Vertex(edge.start), True)
+                    # else:
 
-                child = Node(end_vertex)
-                self.remove_vertex_by_id(child.id)
+                    child = Node(end_vertex)
+                    self.remove_vertex_by_id(child.id)
 
-                parent_node.add_child(child)
+                    parent_node.add_child(child)
 
-                # if len(end_vertex.edges) != 0 and not child.recursive:
-                if len(end_vertex.edges) != 0:
-                    self.create_subtree(end_vertex.edges, child)
+                    # if len(end_vertex.edges) != 0 and not child.recursive:
+                    if len(end_vertex.edges) != 0:
+                        counter += 1
+                        self.create_subtree(end_vertex.edges, child, counter)
+                else:
+                    child = Node(Vertex(edge.get_end()), True)
+                    parent_node.add_child(child)
             else:
-                child = Node(Vertex(edge.get_end()), True)
-                parent_node.add_child(child)
+                if edge.end not in self.containing_node_ids:    #ako jeste onda je vec ubacena u stablo i onda stavljamo recursive=True
+
+                    end_vertex = self.find_vertex_by_id(edge.get_end())
+                    # if end_vertex is None:  #this if is added for logic when having recursion
+                    #     child = Node(Vertex(edge.start), True)
+                    # else:
+
+                    child = Node(end_vertex)
+                    self.remove_vertex_by_id(child.id)
+
+                    parent_node.add_child(child)
+
+                    # if len(end_vertex.edges) != 0 and not child.recursive:
+                    if len(end_vertex.edges) != 0:
+                        self.create_subtree(end_vertex.edges, child)
+                else:
+                    child = Node(Vertex(edge.get_end()), True)
+                    parent_node.add_child(child)
 
     def find_vertex_by_id(self, lookup_id) -> Vertex:
         if isinstance(lookup_id, Vertex):

@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        {% load static %}
-        <link rel='stylesheet' href="{% static 'style.css' %}"/>
-        <title> {{title}} </title>
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'style.css' %}"/>
+<!--    <link rel="stylesheet" href="jstree-master/dist/themes/default/style.min.css" />-->
+<!--    <script src="jstree-master/dist/jstree.min.js"></script>-->
+
+<!--    &lt;!&ndash; Include jQuery library &ndash;&gt;-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Include jstree library -->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>-->
+    <!-- Include jsTree CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+
+<!-- Include jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Include jsTree JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+    <title> {{title}} </title>
+</head>
+<body>
         <div class="page">
             <div class="header">
                 <label for="data-type-selector">Select type of data to parse: </label>
@@ -41,12 +60,7 @@
                 </div>
             </div>
         </div>
-<!-- Include jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<!-- Include jstree library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
 
 <script>
 
@@ -89,37 +103,60 @@
         // Add your visualization rendering code here
         console.log("Visualization data:", visualizationData);
         console.log("Forest: ", forest)
-        var trees = [];
+        var JSONtrees = [];
         for (var tree of forest) {
             console.log("AFTER JSON PARSE:", JSON.parse(tree));
-            trees.push(JSON.parse(tree)); // Add parsed tree to the trees list
+            JSONtrees.push(JSON.parse(tree)); // Add parsed tree to the trees list
         }
-        console.log("TREES", trees)
-        parsedForest = trees.map(transformData)
+        console.log("JSONTREES", JSONtrees)
+        parsedForest = JSONtrees.map(transformData)
         console.log("parsirana suma:",parsedForest)
 
+        $(document).ready(function() {
+    // jsTree initialization code here
 
-      // var treeData = [];
-      //
-      //   for(tree of forest) {
-      //       console.log("Drvo svako zasebno:", tree)
-      //       createTree(tree, treeData);
-      //   }
 
-      // console.log("Tree: ", treeData)
-
-      // Initialize jstree with the created data
-      $('#jstree').jstree({
+        // Initialize jstree with the created data
+        $('#jstree').jstree({
         'core': {
-          'data': trees.map(transformData)
+             'check_callback': function (operation, node, node_parent, node_position, more) {
+                    // Check if the operation is copy_node
+                    if (operation === 'copy_node') {
+                        console.log("uslo u configu gde treba====")
+                        return true; // Allow copy_node
+                    }
+                    // For other operations, return true to allow by default
+                    return true;
+                },
+             'data': JSONtrees.map(transformData)
         }
-      });
+        });
+        });
 
     }
 
+    function copyNode(nodeId, jstreeInstance) {
+        // Get the original node
+        var originalNode = jstreeInstance.get_node(nodeId);
+
+        // Clone the original node data
+        var clonedData = { ...originalNode.data }; // You may need to adjust this based on your data structure
+
+        // Create a new node with the cloned data
+        var newNode = jstreeInstance.create_node(originalNode.parent, clonedData, 'last', function () {
+            // Callback function after the new node is created
+            console.log('Node copied successfully');
+        });
+
+        // If you want to copy children recursively, you can call copyNode recursively for each child node
+        originalNode.children.forEach(function(childId) {
+            copyNode(childId);
+        });
+        return newNode;
+    }
     function traverseAllParsedTrees(searchedNodeId){
         var subtree = null
-        for (tree in parsedForest){
+        for (let tree of parsedForest){
             subtree = findSubtreeForInsert(tree, searchedNodeId)
             if (subtree != null){
                 return subtree
@@ -127,98 +164,82 @@
         }
         return subtree
     }
-
     function findSubtreeForInsert(node, searchedNodeId) {
-    var retVal = null;
-    // Base case: if the node is null or undefined, return
-    if (!node) {
-        return;
-    }
-
-    if (node.id === searchedNodeId){
-        return node;
-    }
-
-    // Recursively traverse children nodes
-    if (node.children && node.children.length > 0) {
-        node.children.forEach(function(child) {
-            retVal = findSubtreeForInsert(child);
-        });
-    }
-    return retVal
-}
-
-   $('#jstree').on('open_node.jstree', function (e, data) {
-    // Get the opened node
-        var openedNode = data.node;
-        for (let key in openedNode.children){
-            let child = openedNode.children[key]
-            console.log("deca:", child)
-            // if (child.recursive){
-            //     console.log("nasao rekurzivno dete")
-            //     tochange = traverseAllParsedTrees(child.id)
-            //     console.log("====Sub tree koje treba da se ubaci: ", tochange)
-            // }
+        var retVal = null;
+        // Base case: if the node is null or undefined, return
+        if (!node) {
+            return;
         }
 
-        // Perform actions when the node is opened
-        console.log("Node opened:", openedNode);
-        console.log("Node opened children:", openedNode.children);
+        if (node.id === searchedNodeId){
+            return node;
+        }
 
-    });
-
-    $('#jstree').on('close_node.jstree', function (e, data) {
-        // Get the closed node
-        var closedNode = data.node;
-
-        // Perform actions when the node is closed
-        console.log("Node closed:", closedNode);
-    });
-
-     // Recursively transform JSON data into jstree-compatible format
-  function transformData(node) {
-        console.log("USLO U DBR FJU")
-    var jstreeNode = {
-        id: node.id,
-        text: node.id,
-        recursive: node.recursive,
-        children: []
-    };
-
-    if (node.children && node.children.length > 0) {
-      node.children.forEach(function(child) {
-        jstreeNode.children.push(transformData(child));
-      });
+        // Recursively traverse children nodes
+        if (node.children && node.children.length > 0) {
+            node.children.forEach(function(child) {
+                retVal = findSubtreeForInsert(child);
+            });
+        }
+        return retVal
     }
 
-    return jstreeNode;
-  }
 
-     function createTree(data, parent) {
+
+    $('#jstree').on('open_node.jstree', function (e, data) {
+        // Get the opened node
+        var openedNode = data.node;
+        var jstreeInstance = $('#jstree').jstree(true);
+
+        for (let id of openedNode.children) {
+            let child = jstreeInstance.get_node(id);
+            console.log("Checking child:", child);
+            for (let id2 of child.children){
+                let grandchild = jstreeInstance.get_node(id2);
+                console.log("Checking grandchild:", grandchild)
+                if (grandchild.original.recursive === true){
+                    console.log("========NALETEO NA REKURZIVNOG UNUKA!!!!=====")
+                    console.log("POCINJE MENJANJE SA POSTOJECIM NODOM")
+                    let recursion_existing_id = grandchild.original.recursive_parent_id
+                    let recursion_existing_node = jstreeInstance.get_node(recursion_existing_id)
+                    console.log("ONAJ KOJI TREBA DA IZMENI REKURZIVNOG UNUKA:", recursion_existing_node)
+
+                    console.log(jstreeInstance.copy_node(recursion_existing_node, openedNode))
+
+                }
+            }
+        }
+
+        // // Perform other actions when the node is opened
+        // console.log("Node opened:", openedNode);
+        // console.log("Node opened children:", openedNode.children);
+
+    });
+
+    // Recursively transform JSON data into jstree-compatible format(nodes with its children!)
+    function transformData(node) {
         console.log("USLO U DBR FJU")
-      if (data.children) {
-        var node = {
-          id: data.id.toString(),
-          text: data.attributes,
-          children: []
+        var jstreeNode = {
+            id: node.id,
+            text: node.id,
+            recursive: node.recursive,
+            children: []
         };
-        console.log("SINGLE NODE", node)
 
-        // Create children nodes recursively
-        data.children.forEach(function(child) {
-          createTree(child, node);
-        });
+            if (jstreeNode.recursive){
+                jstreeNode.recursive_parent_id = jstreeNode.id
+                jstreeNode.id = "recursive_" + jstreeNode.id
+            }
 
-        parent.push(node);
-      } else {
-          console.log("DATA:", data)
-        parent.push({
-          id: data.id.toString(),
-          text: data.attributes
-        });
-        console.log("PARENT:", parent)
-      }
+        if (node.children && node.children.length > 0) {
+          node.children.forEach(function(child) {
+            jstreeNode.children.push(transformData(child));
+          });
+        }
+
+        return jstreeNode;
     }
+
 
 
 </script>
