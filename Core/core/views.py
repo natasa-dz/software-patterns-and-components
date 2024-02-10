@@ -61,8 +61,6 @@ def get_graph(loader, file_name):
             parser = RdfParser()
             parser.load_from_file(file_name)
             graph = parser.create_graph()
-            current_graph = graph
-            # print("Number of edges: ", len(graph.edges))
             return graph
         else:
             parser = XMLLoader()
@@ -70,7 +68,6 @@ def get_graph(loader, file_name):
             graph = parser.create_graph(root)
             return graph
     return None
-
 
 def simple_visualization_data_processing(request):
     if request.method == 'POST':
@@ -84,27 +81,27 @@ def simple_visualization_data_processing(request):
         file_name = request.POST.get('file')
         file_path = "..//data/" + file_name
 
+        graph = get_graph(loader, file_path)
 
-        if current_graph is None:
-            graph = get_graph(loader, file_path)
-            forest = Forest(graph)
+        if file_path.endswith(".nt"):
+            if visualizer and graph:
+                # Assuming 'visualizer.visualize' returns the visualization data
+                visualization_data = visualizer.visualize(graph, request)
+                print("Visualization data rendered! ")
+                return JsonResponse({'visualization_data': visualization_data})
         else:
-            graph = current_graph
             forest = Forest(graph)
-
-        # Render the visualization
-        if visualizer and graph:
-            # Assuming 'visualizer.visualize' returns the visualization data
-            visualization_data = visualizer.visualize(graph, request)
-            print("Visualization data rendered! ")
-            return JsonResponse({'visualization_data': visualization_data,
-                                 'forest': forest.to_dict()})
+            # Render the visualization
+            if visualizer and graph:
+                # Assuming 'visualizer.visualize' returns the visualization data
+                visualization_data = visualizer.visualize(graph, request)
+                print("Visualization data rendered! ")
+                return JsonResponse({'visualization_data': visualization_data,
+                                     'forest': forest.to_dict()})
 
     # Handle invalid requests or errors
     return JsonResponse({'error': 'Invalid request'})
 
-# def parse_tree(request):
-#     return render(request, 'tree.html')
 
 def are_parser_and_file_type_matching(loader, file):
     if loader and file:

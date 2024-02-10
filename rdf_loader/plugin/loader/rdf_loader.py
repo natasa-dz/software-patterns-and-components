@@ -100,10 +100,10 @@ class RdfParser(LoadingService, ABC):
 
 if __name__ == '__main__':
     rdf_parser = RdfParser()
-    rdf_parser.load_from_file("C://SIIT//SIIT-treca godina//Zimski semestar//Softverski obrasci i komponente//Software-patterns-and-components//data//acyclicRDF.nt")
+    rdf_parser.load_from_file("D:\\FAKS\\SOFT. OBRASCI I KOMPONENTE\\Projekat 2023\\Software-patterns-and-components\\data\\acyclicRDF.nt")
     parsed_graph = rdf_parser.create_graph()
     rdf_nodes, rdf_edges = rdf_parser.count_nodes_and_edges(parsed_graph)
-
+    forest=Forest(parsed_graph)
     print("Number of edges: ", rdf_edges)
 
     print("\nVertices with edges:")
