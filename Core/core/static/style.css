@@ -78,6 +78,12 @@
     margin-left: 10px;
 }
 
+.label_query {
+    color: #1f594b; /* Label text color */
+    margin-right: 10px; /* Add margin between labels and inputs */
+    margin-left: 10px;
+}
+
 /* Style for select lists */
 .select {
     width: 160px; /* Set width */

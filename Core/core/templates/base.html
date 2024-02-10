@@ -48,6 +48,15 @@
                     <button class="button" id="pan-left-button">Pan left</button>
                     <button class="button" id="pan-right-button">Pan right</button>
 
+                        <!-- Input field for search query -->
+                    <label class="label_query" for="visualizator-type-selector">Input query: </label>
+
+                    <input type="text" id="Query" placeholder="Query: <attribute> <operator> <value>, operators supported: [>, <, ==, >=, <=, !=]">
+
+                    <!-- Button to apply search and filter -->
+                    <button onclick="applySearchAndFilter()">Apply</button>
+
+
                 </div>
             </div>
         </div>
@@ -78,7 +87,6 @@
 
             },
             success: function (response) {
-                // Handle successful response, e.g., render the visualization
                 renderVisualization(response.visualization_data);
             },
             error: function (xhr, status, error) {
@@ -249,6 +257,11 @@ function renderVisualization(visualizationData) {
 
 
 }
+function applySearchAndFilter() {
+    var filterQuery = document.getElementById('Query').value;
+
+}
+
 
 </script>
     </body>
