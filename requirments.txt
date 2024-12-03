@@ -1,0 +1,6 @@
+django : 5.0.1
+
+uputstvo za startovanje:
+pozicioniras se u folder Core, zatim ukucas komandu
+python setup.py install
+python manage.py runserver (pre toga mozes izvesti migracije)

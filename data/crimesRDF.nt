@@ -1,0 +1,385 @@
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <http://www.socrata.com/rdf/terms#rowID> "row-pq49-mta7.zipj" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "010304468" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-08T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-08T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "2230" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/area> "03" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Southwest" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0377" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "2" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "624" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "BATTERY - SIMPLE ASSAULT" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "0444 0913" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "36" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "F" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "B" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "501" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "SINGLE FAMILY DWELLING" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_used_cd> "400" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_desc> "STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE)" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/status> "AO" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Adult Other" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "624" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/location> "1100 W  39TH                         PL" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.0141" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-pq49-mta7.zipj> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.2978" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <http://www.socrata.com/rdf/terms#rowID> "row-xrxm_3jqv.u8jb" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "190101086" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-02T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-01T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "0330" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/area> "01" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Central" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0163" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "2" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "624" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "BATTERY - SIMPLE ASSAULT" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "0416 1822 1414" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "25" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "M" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "H" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "102" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "SIDEWALK" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_used_cd> "500" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_desc> "UNKNOWN WEAPON/OTHER WEAPON" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/status> "IC" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Invest Cont" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "624" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/location> "700 S  HILL                         ST" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.0459" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xrxm_3jqv.u8jb> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.2545" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <http://www.socrata.com/rdf/terms#rowID> "row-xxcb.8wii.yex8" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "200110444" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-04-14T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-02-13T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "1200" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/area> "01" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Central" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0155" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "2" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "845" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "SEX OFFENDER REGISTRANT OUT OF COMPLIANCE" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "1501" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "0" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "X" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "X" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "726" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "POLICE FACILITY" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/status> "AA" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Adult Arrest" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "845" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/location> "200 E  6TH                          ST" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.0448" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-xxcb.8wii.yex8> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.2474" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <http://www.socrata.com/rdf/terms#rowID> "row-tf7m_hgza-ptgu" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "191501505" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-01T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-01T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "1730" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/area> "15" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "N Hollywood" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "1543" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "2" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "745" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "VANDALISM - MISDEAMEANOR ($399 OR UNDER)" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "0329 1402" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "76" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "F" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "W" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "502" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "MULTI-UNIT DWELLING (APARTMENT, DUPLEX, ETC)" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/status> "IC" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Invest Cont" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "745" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_2> "998" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/location> "5400    CORTEEN                      PL" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.1685" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-tf7m_hgza-ptgu> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.4019" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <http://www.socrata.com/rdf/terms#rowID> "row-55km.dsn3.yf8h" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "191921269" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-01T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-01T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "0415" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/area> "19" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Mission" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "1998" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "2" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "740" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "VANDALISM - FELONY ($400 & OVER, ALL CHURCH VANDALISMS)" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "0329" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "31" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "X" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "X" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "409" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "BEAUTY SUPPLY STORE" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/status> "IC" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Invest Cont" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "740" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/location> "14400    TITUS                        ST" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.2198" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-55km.dsn3.yf8h> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.4468" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <http://www.socrata.com/rdf/terms#rowID> "row-ajud.znru.tbxk" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "200100501" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-02T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-01T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "0030" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/area> "01" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Central" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0163" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "1" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "121" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "RAPE, FORCIBLE" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "0413 1822 1262 1415" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "25" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "F" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "H" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "735" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "NIGHT CLUB (OPEN EVENINGS ONLY)" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_used_cd> "500" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_desc> "UNKNOWN WEAPON/OTHER WEAPON" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/status> "IC" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Invest Cont" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "121" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_2> "998" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/location> "700 S  BROADWAY" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.0452" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-ajud.znru.tbxk> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.2534" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <http://www.socrata.com/rdf/terms#rowID> "row-jrae-4n4t.wkck" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "200100502" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-02T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-02T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "1315" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/area> "01" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Central" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0161" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "1" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "442" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "SHOPLIFTING - PETTY THEFT ($950 & UNDER)" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "1402 2004 0344 0387" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "23" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "M" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "H" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "404" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "DEPARTMENT STORE" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/status> "IC" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Invest Cont" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "442" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_2> "998" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/location> "700 S  FIGUEROA                     ST" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.0483" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-jrae-4n4t.wkck> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.2631" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <http://www.socrata.com/rdf/terms#rowID> "row-a8tp~cur9-34h6" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "200100504" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-04T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-04T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "0040" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/area> "01" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Central" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0155" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "2" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "946" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "OTHER MISCELLANEOUS CRIME" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "1402 0392" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "0" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "X" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "X" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "726" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "POLICE FACILITY" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/status> "IC" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Invest Cont" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "946" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_2> "998" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/location> "200 E  6TH                          ST" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.0448" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-a8tp~cur9-34h6> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.2474" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <http://www.socrata.com/rdf/terms#rowID> "row-iqkg.x4r2.4r54" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "200100507" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-04T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-04T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "0200" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/area> "01" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Central" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0101" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "1" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "341" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "THEFT-GRAND ($950.01 & OVER)EXCPT,GUNS,FOWL,LIVESTK,PROD" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "1822 0344 1402" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "23" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "M" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "B" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "502" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "MULTI-UNIT DWELLING (APARTMENT, DUPLEX, ETC)" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/status> "IC" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Invest Cont" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "341" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_2> "998" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/location> "700    BERNARD                      ST" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.0677" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-iqkg.x4r2.4r54> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.2398" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <http://www.socrata.com/rdf/terms#rowID> "row-k6py-fdtf-9miy" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "201710201" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-06-19T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-05-26T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "1925" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/area> "17" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Devonshire" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "1708" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "1" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "341" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "THEFT-GRAND ($950.01 & OVER)EXCPT,GUNS,FOWL,LIVESTK,PROD" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "1300 0202 0378 0325" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "0" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "X" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "X" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "203" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "OTHER BUSINESS" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/status> "AO" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Adult Other" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "341" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/location> "11900    BALBOA                       BL" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.2864" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-k6py-fdtf-9miy> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.5021" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <http://www.socrata.com/rdf/terms#rowID> "row-esj7.kxjw_8isx" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "200100509" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-04T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-04T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "2200" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/area> "01" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Central" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0192" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "1" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "330" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "BURGLARY FROM VEHICLE" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "1822 1414 0344 1307" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "29" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "M" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "A" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "101" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "STREET" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_used_cd> "306" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_desc> "ROCK/THROWN OBJECT" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/status> "IC" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Invest Cont" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "330" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/location> "15TH" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/cross_street> "OLIVE" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.0359" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-esj7.kxjw_8isx> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.2648" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <http://www.socrata.com/rdf/terms#rowID> "row-zkra-nibc.ajk3" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "200100510" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-05T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-05T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "0955" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/area> "01" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Central" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0111" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "2" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "930" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "CRIMINAL THREATS - NO WEAPON DISPLAYED" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "0421 0906" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "35" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "M" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "O" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "108" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "PARKING LOT" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_used_cd> "511" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_desc> "VERBAL THREAT" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/status> "IC" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Invest Cont" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "930" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/location> "800 N  ALAMEDA                      ST" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.0615" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-zkra-nibc.ajk3> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.2412" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <http://www.socrata.com/rdf/terms#rowID> "row-yvfk-etic-36mi" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "200100514" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-05T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-05T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "1355" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/area> "01" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Central" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0162" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "1" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "341" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "THEFT-GRAND ($950.01 & OVER)EXCPT,GUNS,FOWL,LIVESTK,PROD" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "1822 0344 2032" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "41" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "M" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "A" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "503" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "HOTEL" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/status> "AA" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Adult Arrest" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "341" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/location> "800 S  OLIVE                        ST" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.0452" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-yvfk-etic-36mi> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.2569" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <http://www.socrata.com/rdf/terms#rowID> "row-rrbu~mhgj_2icb" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "200100515" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-07T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-07T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "1638" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/area> "01" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Central" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0162" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "1" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "648" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "ARSON" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "1402 1501 2004" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "0" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "X" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/vict_descent> "X" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/premis_cd> "404" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/premis_desc> "DEPARTMENT STORE" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_used_cd> "500" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/weapon_desc> "UNKNOWN WEAPON/OTHER WEAPON" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/status> "IC" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/status_desc> "Invest Cont" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_1> "648" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_2> "998" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/location> "700 W  7TH                          ST" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/lat> "34.0480" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-rrbu~mhgj_2icb> <https://data.lacity.org/resource/_2nrs-mtv8/lon> "-118.2577" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <http://www.socrata.com/rdf/terms#rowID> "row-sqs4-2vrk.7fgb" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <http://www.w3.org/2000/01/rdf-schema#member> <https://data.lacity.org/resource/_2nrs-mtv8> .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/dr_no> "200100520" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/date_rptd> "2020-01-08T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/date_occ> "2020-01-08T00:00:00" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/time_occ> "1805" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/area> "01" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/area_name> "Central" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/rpt_dist_no> "0128" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/part_1_2> "1" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd> "442" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/crm_cd_desc> "SHOPLIFTING - PETTY THEFT ($950 & UNDER)" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/mocodes> "0325 1402 0344 1822" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/vict_age> "24" .
+<https://data.lacity.org/resource/_2nrs-mtv8/row-sqs4-2vrk.7fgb> <https://data.lacity.org/resource/_2nrs-mtv8/vict_sex> "F" .
